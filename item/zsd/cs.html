@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Parent() {
+        this.name='张三';
+        this.age=23;
+    }
+    Parent.prototype.say = function (){
+        return 'hello';
+    }
+
+    function Child() {
+        this.name = '李四';
+        Parent.call(this);
+    }
+    Child.prototype.eat =  function(){
+        return '水果';
+    }
+
+    Child.prototype = Parent.prototype;
+    Child.prototype.constructor = Child;
+    console.log(Child.prototype.__proto__)
+    //console.log(Child.prototype.__proto__.__proto__)
+    let ls = new Child();
+    alert(ls.say());
+    alert(ls.name)
+    alert(ls.age)
+</script>
+</body>
+</html>

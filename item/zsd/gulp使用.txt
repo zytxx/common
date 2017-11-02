@@ -1,0 +1,95 @@
+gulp.js  基于流的自动化构建工具  简化开发  解放双手
+1、安装gulp的依赖环境nodejs，npm
+    下载nodejs，并安装 ，测试安装成功 node -v
+    安装淘宝的镜像....
+    npm install -g cnpm --registry=https://registry.npm.taobao.org
+    npm init  生成 package.json 文件
+2、安装gulp的全局环境
+    npm install -g gulp
+3、安装 gulp的开发依赖环境(就是项目安装gulp)
+    npm install --save-dev gulp
+4、安装 js的压缩插件
+    npm install --save-dev gulp-uglify
+5、安装 css的纬缩 插件
+    npm install --save-dev gulp-clean-css
+6、安装js代码检测提示
+    npm install --save-dev gulp-jshint
+7、安装代码合并 的插件
+    npm install --save-dev gulp-concat
+8、安装重命名插件
+    npm install --save-dev gulp-rename
+
+9、安装图片压缩
+    npm install --save-dev  gulp-imagemin
+10、html文件压缩
+    npm install --save-dev     gulp-htmlmin
+
+11、安装图片精灵
+    npm install --save-dev gulp.spritesmith
+12.
+Browsersync能让浏览器实时、快速响应您的文件更改
+npm install browser-sync gulp --save-dev
+
+新建gulpfile.js 文件
+var gulp = require('gulp');//加载gulp 依赖
+var htmlmin = require('gulp-htmlmin');//htmlmin 依赖
+var cssclean = require('gulp-clean-css');//css 压缩依赖
+var uglify = require('gulp-uglify');//js 压缩依赖
+var fconcat = require('gulp-concat');//文件合并依赖
+var frename = require('gulp-rename');//文件 重命名  依赖
+var sass = require('gulp-sass');//sass 依赖
+
+var browserSync = require('browser-sync').create();
+var reload = browserSync.reload;
+// 静态服务器
+gulp.task('browser-sync', function () {
+    browserSync.init({
+        server: {
+            baseDir: "./"
+        }
+    });
+});
+
+//html压缩
+gulp.task('htmlmin', function () {
+    gulp.src('./*.html')
+        .pipe(htmlmin({collapseWhitespace: true}))
+        .pipe(gulp.dest('dest/'))
+});
+//js压缩
+gulp.task('uglify', function () {
+    gulp.src(['js/*.js', 'js1/*.js'])
+        .pipe(fconcat('all.js'))
+        .pipe(frename({suffix: '.min'}))
+        .pipe(uglify())
+        .pipe(gulp.dest('dest/'))
+});
+//css 压缩
+gulp.task('cssclean', function () {
+    gulp.src('css/*.css')
+        .pipe(fconcat('style.css'))
+        .pipe(frename({suffix: '.min'}))
+        .pipe(cssclean())
+        .pipe(gulp.dest('dest/'))
+});
+gulp.task('sass', function () {
+    gulp.src('sass/*.scss')
+        .pipe(sass.sync({outputStyle: 'expanded'}).on('error', sass.logError))
+        .pipe(gulp.dest('dest/'))
+});
+
+gulp.task('default', ['sass'], function () {
+
+    gulp.watch('./sass/*.scss', ['sass']);
+
+});
+/*
+gulp.task('default',['htmlmin','uglify','cssclean','browser-sync'],function(){
+    gulp.watch('./!*.html',['htmlmin']);
+    gulp.watch(['./js/!*.js','./js1/!*.js'],['uglify']);
+    gulp.watch('./css/!*.css',['cssclean']);
+    gulp.watch(['./!*.html','./js/!*.js','./js1/!*.js','./css/!*.css'],reload);
+});
+*/
+
+

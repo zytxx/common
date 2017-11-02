@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包计数器写法</title>
+    <script>
+        //一
+        function aa(){
+            var num = 0;
+            return function(){
+                return ++num;
+            }
+        }
+        var result = aa();
+        console.log(result());
+        console.log(result());
+        console.log(result());
+        console.log(result());
+        //二
+        var b = function (){
+            var num = 0;
+            return function(){
+                return ++num;
+            }
+        }
+        var result = b();
+        console.log(result());
+        console.log(result());
+        console.log(result());
+        console.log(result());
+        //三
+        var c = (function (){
+            var num = 0;
+            return function(){
+                return ++num;
+            }
+        })();
+        console.log(c());
+        console.log(c());
+        console.log(c());
+        console.log(c());
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

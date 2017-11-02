@@ -1,0 +1,150 @@
+js 是一个动态类型,弱类型,基于原型的脚本语言
+   弱类型   申明变量时不用说明是什么类型
+js组成
+    ECMAScript 定义脚本语言的属性 方法 对象
+    DOM(文档对象模型) 把整个页面规划成由节点层级构成的文档 和html交互的接口
+    BOM(浏览器对象模型) 和浏览器对象对话的接口
+
+JavaScript 可以通过不同的方式来输出数据：
+    使用 window.alert() 弹出警告框。
+    使用 document.write() 方法将内容写到 HTML 文档中。(原生js 引入js)
+    使用 innerHTML 写入到 HTML 元素。
+    使用 console.log() 写入到浏览器的控制台。
+
+js 基本弹出窗口
+    1.alert
+    2.confirm  会返回true  或  false
+    3.prompt('提示内容','默认输入内容')
+
+js 数据类型
+    number null undefined boolean string object symbol(es6 新增)
+
+js 对象  数组            函数
+   构造函数  字面量    函数声明   函数表达式
+
+  函数名 instanceof Function  判断是不是函数
+js 数组函数
+   数组长度 length
+   首尾增删
+   push       pop
+   unshift  shift
+   数组排序
+   sort   sort(function(a,b){  //大到小  小到大
+               return a-b    //(b-a)
+                })
+   reverse  反转数组
+   concat   数组合并  生成新数组  如果不传参   就会生成原数组副本  这也是复制数组的一种方法
+   slice    它能够基于当前数组中的一或多个项创建一个新数组  slice(0)复制数组  2个参数  不包含后一个参数的项
+   splice   很强大
+            删除：可以删除任意数量的项，只需指定2 个参数：要删除的第一项的位置和要删除的项数。
+            例如，splice(0,2)会删除数组中的前两项。
+            插入：可以向指定位置插入任意数量的项，只需提供3 个参数：起始位置、0（要删除的项数）
+            和要插入的项。如果要插入多个项，可以再传入第四、第五，以至任意多个项。例如，
+            splice(2,0,"red","green")会从当前数组的位置2 开始插入字符串"red"和"green"。
+            替换：可以向指定位置插入任意数量的项，且同时删除任意数量的项，只需指定3 个参数：起
+            始位置、要删除的项数和要插入的任意数量的项。插入的项数不必与删除的项数相等。例如，
+            splice (2,1,"red","green")会删除当前数组位置2 的项，然后再从位置2 开始插入字符串
+            "red"和"green"。
+   join     将数组连接为字符串
+   位置方法
+   indexOf  头开始    返回位置索引
+   lastIndexOf 尾开始 返回位置索引
+   迭代方法
+   every()：对数组中的每一项运行给定函数，如果该函数对每一项都返回true，则返回true。
+   filter()：对数组中的每一项运行给定函数，返回该函数会返回true 的项组成的数组。
+   forEach()：对数组中的每一项运行给定函数。这个方法没有返回值。
+   map()：对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组。
+   some()：对数组中的每一项运行给定函数，如果该函数对任一项返回true，则返回true。
+
+js 字符串函数
+   charAt  返回字符
+   charCodeAt   返回字符编码
+   concat    字符串拼接   '+'也可以
+   slice     开始位置   结束位置
+   substring 开始位置   结束位置
+   substr    开始位置   长度
+   位置方法
+      indexOf  头开始    返回位置索引
+      lastIndexOf 尾开始 返回位置索引
+   trim  删除前后空格
+   replace 字符替换
+   toLowerCase()、toLocaleLowerCase()、toUpperCase()和toLocaleUpperCase()
+   转码与解码
+   encodeURI()和encodeURIComponent()方法对应的两个方法分别是decodeURI()和
+   decodeURIComponent()
+   split 分割字符串为数组
+
+js 数字
+   toFixed()  保留几位小数(四舍五入)
+   parseInt
+   parseFloat
+
+js 正则
+   test
+   replace
+
+   \d 数字：[0-9]
+   \D 非数字： [^0-9]
+   \s 空白字符：[ \t\n\x0B\f\r]
+   \S 非空白字符：[^\s]
+   \w 单词字符：[a-zA-Z_0-9]
+   \W 非单词字符：[^\w]
+
+js 时间
+   let date = new Date()
+
+
+js 数学
+   Math.max()
+   Math.min()
+   Math.ceil()执行向上舍入，即它总是将数值向上舍入为最接近的整数；
+   Math.floor()执行向下舍入，即它总是将数值向下舍入为最接近的整数；
+   Math.round()执行标准舍入，即它总是将数值四舍五入为最接近的整数（这也是我们在数学课
+   上学到的舍入规则
+   Math.random() 返回大于等于0 小于1 的一个随机数
+   Math.abs()  绝对值
+   Math.pow()  次幂
+
+js DOOM操作
+   document.getElementById
+
+js Cookie
+   var username=document.cookie.split(";")[0].split("=")[1];
+   //JS操作cookies方法!
+   //写cookies
+   function setCookie(name,value)
+   {
+   var Days = 30;
+   var exp = new Date();
+   exp.setTime(exp.getTime() + Days*24*60*60*1000);
+   document.cookie = name + "="+ escape (value) + ";expires=" + exp.toUTCString();
+   }
+   异步加载js  defer  async
+   jQuery  选择器引擎sizzle  let  $s =    表示jQ对象
+   Dom对象加$  变  jQ对象
+   jQ对象  加[]  /   get()
+   
+   
+   
+   
+   
+   
+   获取元素样式
+   function getStyle(obj,attr){
+       //针对IE
+       if(obj.currentStyle){
+         return obj.currentStyle[attr];               //由于函数传过来的attr是字符串，所以得用[]来取值
+       }else{
+         //针对非IE
+         return window.getComputedStyle(obj,false)[attr];
+       }
+    }
+    
+    获取或者设置css属性
+    function css(obj,attr,value){
+       if(arguments.length == 2){
+         return getStyle(obj,attr);
+       }else{   
+         obj.style[attr] = value;
+       }
+    }

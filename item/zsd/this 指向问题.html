@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this指向问题</title>
+</head>
+<body>
+<script>
+    function baz(){
+        //当前调用栈是：baz
+        // 因此  当前调用位置是全局作用域
+        debugger
+        console.log('baz');
+        bar();//bar的调用位置
+    }
+    function bar() {
+        //当前调用栈是：baz -->bar
+        // 因此  当前调用位置是baz中
+        console.log('bar');
+        foo();//foo的调用位置
+    }
+    function foo() {
+        //当前调用栈是baz-->bar-->foo
+        // 因此  当前调用位置是bar中
+        console.log( "foo" );
+    }
+    baz();  //baz的调用位置
+    
+1.全局范围：它 会指向 全局对象（ 浏览器下指window）
+2.全局函数调用：它 还是指向全局对象。
+3.对象函数调用：调用某个对象的函数， 它指向 当前对象。
+4.使用 new 实例化对象时：它指向 新创建的 对象。
+5.调用某些方法时：如： Function.prototype 上的 call 或者 apply 方法 以及 with等它指向 传入的对象。
+</script>
+</body>
+</html>

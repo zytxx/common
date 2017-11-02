@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #container {
+            margin: 0 auto;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #ddd;
+        }
+
+        .item {
+            margin: 90px auto;
+            width: 960px;
+            height: 512px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 2px 2px 5px #000;
+            cursor: pointer;
+        }
+
+        img {
+            margin: 0 auto;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        #info {
+            position: relative;
+            padding: 30px 0 30px 80px;
+            /*bottom: 206px;*/
+            bottom: 0px;
+            background: rgba(0, 0, 0, .3);
+            font-family: 方正姚体;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        #info h3 {
+            font-size: 30px;
+            margin-bottom: 20px;
+            color: rgba(0, 255, 0, 0.58);
+        }
+
+        #info p {
+            line-height: 30px;
+            color: #c4dcce;
+        }
+
+        .item:hover #info {
+            bottom: 234px;
+            transition: all 0.2s ease;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+
+
+    <div class="item">
+        <img src="img/6.jpg" alt="">
+        <div id="info">
+            <h3>鬼刀：海琴烟公主</h3>
+            <p>出自国产wlop所著漫画《鬼刀》<br/>
+                其中的人物南风的剑侍 其爱妻的妹妹
+            </p>
+            <p>在小绿当时身处的地区，短发、刺青都是风俗的禁忌。<br/>
+                所以看似温柔体贴的她也绝对不是一个没有故事的姑娘。如果爱她，就接受她所有的过去吧
+            </p>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

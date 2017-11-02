@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小球滚动</title>
+    <style>
+        * {
+            padding：0;
+            margin: 0;
+        }
+
+        body {
+            background: gray;
+        }
+
+        #ball {
+            width: 100px;
+            height: 100px;
+            background-color: #2aabd2;
+            border-radius: 100px;
+            position: absolute;
+        }
+
+        #dian {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            width: 20px;
+            height: 20px;
+            border-radius: 20px;
+            background: #ff057e;
+        }
+    </style>
+</head>
+<body>
+<div id="ball">
+    <div id="dian"></div>
+</div>
+<script>
+    window.onload = function () {
+        var ball = document.getElementById('ball');
+        //最好用 document.documentElement
+        //document.body   document.documentElement document.childNodes[0] document.firstChild
+        var x = document.documentElement.clientWidth;
+        var y = document.documentElement.clientHeight;
+        var s;
+        //console.log(x,y)
+        document.documentElement.addEventListener('keydown', function (ev) {
+            //alert(ev.keyCode);
+            //清除间歇调用  特别是一直点着键盘时
+            clearInterval(s);
+            s = setInterval(function () {
+                switch (ev.keyCode) {
+                    //上 38
+                      case 38:
+                          if(ball.offsetTop>0){
+                              ball.style.top = ball.offsetTop - 10 + 'px';
+                          }
+                          break;
+                    //下 40
+                    case 40:
+                        if (ball.offsetTop + ball.offsetHeight < y) {
+                            ball.style.top = ball.offsetTop + 10 + 'px';
+                        }
+                        break;
+                    //左 37
+                    case 37:
+                        if (ball.offsetLeft > 0) {
+                            ball.style.left = ball.offsetLeft - 10 + 'px';
+                        }
+                        break;
+                    //右 39
+                    case 39:
+                        if (ball.offsetLeft + ball.offsetWidth < x) {
+                            ball.style.left = ball.offsetLeft + 10 + 'px';
+                        }
+                        break;
+                }
+            }, 20)
+        });
+        document.documentElement.addEventListener('keyup', function () {
+            clearInterval(s);
+        })
+    }
+</script>
+</body>
+</html>

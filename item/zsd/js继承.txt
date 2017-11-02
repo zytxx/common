@@ -1,0 +1,65 @@
+原型继承
+ function Parent() {
+        this.name='张三';
+        this.age=23;
+    }
+    Parent.prototype.say = function (){
+        return 'hello';
+    }
+
+    function Child() {
+        this.name = '李四';
+    }
+    Child.prototype.eat =  function(){
+        return '水果';
+    }
+
+    Child.prototype = new Parent();
+    Child.prototype.constructor = Child;   //不这样会造成继承链的紊乱  明明是实例化的Child   却说是Parent
+    let ls = new Child();
+    alert(ls.say());
+    alert(ls.name)
+    console.log(ls.__proto__.constructor);
+    //缺陷   会让 Child.prototype  上面原有的属性消失
+
+
+对象冒充
+ function Parent() {
+        this.name='张三';
+        this.age=23;
+    }
+    Parent.prototype.say = function (){
+        return 'hello';
+    }
+
+    function Child() {
+        this.name = '李四';
+        Parent.call(this);   //会覆盖子元素的属性
+    }
+    Child.prototype.eat =  function(){
+        return '水果';
+    }
+
+    Child.prototype = Parent.prototype;
+    Child.prototype.constructor = Child;
+     let ls = new Child();
+        alert(ls.say());
+        alert(ls.name)//张三
+        alert(ls.age)
+
+
+    缺陷  改变Child.prototype  也会改变Parent.prototype   应用类型     指向同一个内存地址
+
+原型    　Js所有的函数都有一个prototype属性，这个属性引用了一个对象，即原型对象，也简称原型。
+               这个函数包括构造函数和普通函数，我们讲的更多是构造函数的原型，但是也不能否定普通函数也有原型。
+
+主要用来实现继承
+
+    原型继承
+    一个父构造函数   一个子构造函数   让子构造函数的原型等于父构造函数的一个实例
+    让子构造函数的原型的构造函数指向自己   以免原型链紊乱
+
+
+    对象冒充         一个父构造函数   一个子构造函数   让子构造函数的原型等于父构造函数的原型
+    Parent.call(this);
+

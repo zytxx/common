@@ -1,0 +1,739 @@
+一、html5、css3
+1、H5与CSS3新特性
+I. html5新特性:
+      1.标签语义化
+      2.本地存储特性(localstorage,sessionStorage)
+      3.设备兼容特性(跨平台)
+      4.连接特性（websocket）
+      5.网页多媒体(audio,video)
+      6.三维、图形及特效(canvas绘图)
+      7.性能与集成（xmlhttprequest2,worker）
+      8.css3
+  II.css3的新特性
+      1.边框
+      2.背景
+      3.颜色
+      4.文字效果
+      5.用户界面
+      6.选择器
+      7.盒模型
+      8.多列布局，媒体查询
+2、用CSS3做动画效果，你会用哪些样式？
+transform   变换   translate、rotate、scale、skew
+transition  过渡
+animation  keyframe  动画
+3、css动画怎么实现的	animate	  transition	  transform
+4、h5常用哪些新标签
+header、hgroup、article、aside、datalist、details、
+summary、figure、figcaption、footer、mark、nav、meter
+5、语义化表签的好处
+    1.HTML结构清晰    2.代码可读性较好    3.无障碍阅读
+    4.搜索引擎可以根据标签的语言确定上下文和权重问题
+    5.移动设备能够更完美的展现网页（对css支持较弱的设备）
+    6.便于团队维护和开发
+6、html5怎么打包
+    1、PhoneGap  Build Service 打包
+       PhoneGap官网有相关教程可参考，不具体介绍
+    2、android SDK +eclispe  打包
+7、讲讲css3的弹性布局
+.flex-container
+ {
+ list-style: none;
+ display: flex;
+ flex-direction: row;
+ flex-wrap: wrap;
+ }
+ .flex-item {
+ 	   padding: 5px;
+ 	   }
+8、css3的响应式布局是怎么实现的
+通过媒体查询@media 根据不同的宽度设置不同的样式
+
+9、用canvans做过什么画图实现一些漂亮的效果。
+时钟、雪花效果、自制画板、圆闪现
+
+10、css常见的兼容问题
+1、怪异模式问题：漏写DTD声明，Firefox仍然会按照标准模式来解析网页，但在IE中会触发怪异模式。为避免怪异模式给我们带来不必要的麻烦，最好养成书写DTD声明的好习惯。
+2、IE6双边距问题：在IE6下，如果对元素设置了浮动，同时又设置了margin-left或margin-right，margin值会加倍。
+解决问题：设置display:inline
+3、上下margin重合：margin是个有点特殊的样式，相邻的margin-left和margin-right是不会重合的，但相邻的margin-top和margin-bottom会产生重合。不管IE还是Firefox都存在这问题。
+解决问题：统一使用margin-top或者margin-bottom，不要混合使用。
+4、超链接访问后hover样式不出现：有时候我们同时设置了a:visited和a:hover样式，但一旦超链接访问后，hover的样式就不再出现，这是怎么回事呢？是因为将样式顺序放错了，调整为先a:visited再a:hover。关于a标签的四种状态的排序问题，有个简单好记的原则，叫做love hate原则，即i(link)ov(visited)e h(hover)a(active)e。
+5、IE6、IE7的hasLayout问题：很多时候，CSS在IE下的解析十分奇怪，明明在Firefox中显示得非常正确，但到了IE下却出现了问题，有的时候，这些问题甚至表现得非常诡异。
+6、行内元素上下margin及padding不拉开元素间距的问题：行内元素的margin和padding属性很奇怪，水平方向的padding-left、padding-right、margin-left、margin-right都产生边距效果，但竖直方向的padding-top、padding-bottom、margin-top、margin-bottom却不会产生边距效果。
+解决问题：
+将行内元素display设置为block即可解决
+7、.IE6下select元素显示问题：浏览器解析页面时，会先判断元素的类型，如果是窗口类型的，会优先于非窗口类型的元素，显示在页面最顶端，如果同属于非窗口类型的，才会去判断z-index的大小。select元素在IE6下是以窗口形式显示的，这是IE6的一个Bug。导致的情况是往往想要弹出一个层，结果select元素出现在层上方。
+解决问题：
+我们可以用一个和弹出层同样大小的iframe放在层下面，select上面，用iframe遮住select。比如设置弹出层的样式z-index:2，iframe的样式z-index:1，使iframe位于层下方。
+8、IE6对png的透明度支持问题：png格式因为其优秀的压缩算法和对透明度的完美支持，成为Web中最流行的图片格式之一。但它存在一个众所周知的头疼问题---IE6下对png的透明度支持并不好。本该是透明的地方，在IE6下会显示为浅蓝色。可以使用IE下私有的滤镜功能来解决问题
+9、ul的不同表现：ul列表也是在IE与Firefox中容易发生问题的对象，主要源自浏览器对ul对象的默认值设置。在IE与Firefox中，一部分对象有默认的属性（比如h1~h6），他们本身就带有大字号、加粗样式以及一些边距效果。ul也是如此，默认情况下ul是有边距的。
+解决问题：
+可以用hack方法分别针对IE和Firefox单独写样式，但更好的做法是样式开头先统一ul边距，ul{padding:0px;margin:0px;}。
+10、IE3px问题：3px问题不是经常被人发现，因为它的影响只产生3px的位移。如果是精确到像素级的设计，3px的影响可谓不小。
+解决问题：
+是把#mydiv设置为display:inline-block。
+11.高度不适应问题：高度不适应指的是，当内层对象的高度发生变化时，外层对象的高度不能自动扩展，特别是当内层对象使用padding或margin之后。高度不适应问题不是IE的专利，Firefox也出现这种问题。
+解决问题：
+可以在对象上下增加2个高度为0的空div，并强制内容不显示。
+
+二、原生js
+1、数组哪些方法
+pop、shift、unshift、sort、reverse、push、splice、slice、concat、join、indexOf、lastIndexOf、forEach、map
+2、面向对象编程思想
+基于对象，通常指的是对数据的封装，以及提供一组方法对封装过的数据操作。
+面向对象，则在基于对象的基础上增加了多态性。
+所谓多态，就是可以用统一的方法对不同的对象进行同样的操作。
+3、字符串方法
+1、charCodeAt方法返回一个整数，代表指定位置字符的Unicode编码。
+2、fromCharCode方法从一些Unicode字符串中返回一个字符串。
+3、charAt方法返回指定索引位置处的字符。如果超出有效范围的索引值返回空字符串。
+4、slice方法返回字符串的片段。
+5、substring方法返回位于String对象中指定位置的子字符串。
+6、substr方法返回一个从指定位置开始的指定长度的子字符串。
+7、indexOf方法放回String对象内第一次出现子字符串位置。如果没有找到子字符串，则返回-1。
+8、lastIndexOf方法返回String对象中字符串最后出现的位置。如果没有匹配到子字符串，则返回-1。
+9、search方法返回与正则表达式查找内容匹配的第一个字符串的位置。
+10、concat方法返回字符串值，该值包含了两个或多个提供的字符串的连接。
+11、split将一个字符串分割为子字符串，然后将结果作为字符串数组返回。
+12、toLowerCase方法返回一个字符串，该字符串中的字母被转换成小写。
+13、toUpperCase方法返回一个字符串，该字符串中的所有字母都被转换为大写字母。
+4、substring,subsr区别
+substr是从起始点截取某个长度的字符串,	 而substring是截取2个位置之间的字符串
+5、js实现锚点链接效果
+<a name="anchor"></a>
+location.hash="anchor";
+6、数组去重，截取数组最后三个，封装方法数组去重（返回重复的项）
+
+7、json理解
+json(javascript object notation)全称是javascript对象表示法，它是一种数据交换的文本格式，而不是一种编程语言，用于读取结构化数据。
+8、省略号实现
+overflow:hidden;/*超出长度的文字隐藏*/
+ text-overflow:ellipsis;/*文字隐藏以后添加省略号*/
+ white-space:nowrap;/*强制不换行*/
+
+9、cookie、sessionstorage与localstorage区别
+cookie容量相对较小，默认情况下且当浏览器关闭后会清除缓存
+	localStorage 容量大，永久保存缓存数据
+	sessionStorage 同源窗口下永久保存数据，当关闭浏览器时清除缓存
+	//webStorage将数据保存在浏览器本地的服务器中，减少了数据请求的时间
+10、position：absolute,fixed,static区别
+1、static（静态定位）：默认值。没有定位，元素出现在正常的流中（忽略 top, 	bottom, left, right 或者 z-index 声明）。
+2、relative（相对定位）：生成相对定位的元素，通过top,bottom,left,right的设置相对于其正常（原先本身）位置进行定位。可通过z-index进行层次分级。　　
+3、absolute（绝对定位）：生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。元素的位置通过 "left", "top", "right" 以及 "bottom" 属性进行规定。可通过z-index进行层次分级。
+4、fixed（固定定位）：生成绝对定位的元素，相对于浏览器窗口进行定位。元素的位置通过 "left", "top", "right" 以及 "bottom" 属性进行规定。可通过z-index进行层次分级。
+如果用position来布局页面，父级元素的position属性必须为relative，而定位于父级内部某个位置的元素，最好用 absolute，因为它不受父级元素的padding的属性影响，当然你也可以用relative，不过到时候计算的时候不要忘记padding的值
+11、浮动为什么要清除
+清除浮动如果不就出现，div重叠的问题。
+1. 块状元素，会钻进浮动元素的下面，被浮动元素所覆盖，
+2. 行内元素，例如文字， 则会环绕在浮动元素的周围，为浮动元素留出空间
+3. 浮动元素的父元素坍缩
+12、在app中无限滚动怎么实现，不用插件
+
+13、一个数组有多个元素数据，怎么让它一次性变成空数组
+arr.splice（0，arr.length）
+ 14、用ul无序列表的时候，通常我们用浮动让它成一排显示，除了这个方法，还有什么方法可以实现一样的效果
+给父级元素设置display：flex，子元素flex：1样式
+15、判断数据类型除了typeof还有什么
+instanceof：主要是判断变量是对象的实例，可以用来判断是否是Array，
+constructor属性返回对创建此对象的数组函数的引用，
+prototype，常见于判断数组
+16、什么是js原型链，原型链有哪些继承方式
+每一个方法和对象都有一个原型对象prototype，这个原型对象会指向父级的原型对象，最终指向null
+原型prototype
+1、原型链的继承
+function Parent(){
+this.name = "王健林"
+}
+function Son(){
+this.age = 24
+}
+Son.prototype = new Parent();
+var son1 = new Son();
+alert(son1.age);
+alert(son1.name);
+2、对象冒充的继承
+function Son(){
+Parent.call(this);
+}
+var son1 = new Son();
+17、说说怎么终止循环，它们的区别continue和break
+  break是结束整个循环体，continue是结束单次循环
+18、'hello word'.spacetiy（）输出'h e l l o w o r d'，
+String.prototype.spacify = function(){
+ return this.match(/\s/gi).split("").join("");
+}
+19、写一个log函数传参，传递不定个参数
+function log（）{
+var len = arguements.length;
+if(len==0){
+} else if (len ==1){
+} ...
+}
+20、overload库
+重载；
+同一类中可以有多个名称相同的方法，
+方法参数个数或类型不同；
+与修饰符无关；
+与访问权限无关；
+与返回值无关；
+与异常类型、数量无关
+21、user{
+xxx:123,
+yy:function(){
+		this.xxx			}		}
+	console.log(user.yy)
+结果：function (){
+				this.xxx
+			}
+22、js有什么缺陷
+	1、非面向对象编程语言
+2、作用域的问题
+this，变量提升
+23、数组怎么克隆
+遍历for in实现克隆
+arr.slice(0)
+arr.concat()
+24、闭包理解，举一个闭包的事例应用，闭包的好处
+函数嵌套函数的时候会形成一个独特的作用域，函数可以使用定义在自身之外的变量，闭包会造成变量不能释放，造成内存泄露，
+解决方法：把变量赋值为undefined
+function a(){	  var count=0;		  return functioin(){	  return count++;	 }	}
+var d=a();	d();	d();	d();
+用途：一个是可以读取函数内部的变量，另一个就是让这些变量的值始终保持在内存中，不会在f1调用后被自动清除。
+25、string转number方法
+Number、parseInt、parseFloat
+   number转string方法：String
+26、数字保留2位小数方法有哪些
+toFixed
+27、js函数中的函数重载如何实现
+利用arguments.length判断函数参数的长度，处理不同的逻辑
+28、数组扁平化处理方法有哪些
+数组有5个迭代方法：every(),filter(),forEach(),map(),some()
+every()和some()是用来判断数组的
+filter()和map()都是处理数组的，它们都返回数组
+29、伪数组是什么，怎么把伪数组转化成真正的数组
+无法直接调用数组方法或期望length属性有什么特殊的行为，不具有数组的push,pop等方法，但仍可以对真正数组遍历方法来遍历它们。典型的是函数的argument参数，还有像调用getElementsByTagName,document.childNodes之类的,它们都返回NodeList对象都属于伪数组。可以使用Array.prototype.slice.call(fakeArray)将数组转化为真正的Array对象。
+30、用正则去字符串中前后空格
+str.match(/[^\s]/gi).join('');
+31、js二分法查找
+二分法查找算法：
+采用二分法查找时，数据需是排好序的。
+主要思想是：（设查找的数组区间为array[s, e]）
+（1）确定该区间的中间位置m
+（2）将查找的值T与array[m]比较,若相等，查找成功返回此位置；否则确定新的查找区域，继续二分查找。
+区域确定如下：
+这里设array从小到大排列,
+array[m]>T由数组的有序性可知array[m,……,e]>T;
+故新的区间为array[s,……，m-1],
+类似上面查找区间array[s,……，m-1]。
+每一次查找与中间值比较，判断是否查找成功，不成功当前查找区间缩小一半，循环查找，即可。
+时间复杂度:O(log2n)。
+32、call、apply、bind的异同点
+对于第一个参数意义都一样，但对第二个参数：
+apply传入的是一个参数数组，也就是将多个参数组合成为一个数组传入，而call则作为call的参数传入（从第二个参数开始）。
+bind不支持ie8以下
+33、用clone方法封装5种数据类型的复制
+http://www.cnblogs.com/dll-ft/p/5846027.html
+34、css哪些属性能继承
+http://blog.csdn.net/liaozhongping/article/details/47057941
+35、行内标签和块级标签有哪些
+行内标签：a、abbr、acronym、b、br、cite、code、em、i、img、input、label、s、select、small、span、strong、sub、sup、 textarea、u
+块级标签：div、form、ul、ol、dl、fieldset 、address
+行内块标签：通过display：inline-block;转换
+36、数据类型转换3种强制，2种隐式
+string-->number:
+强制：Number、parseInt、parseFloat
+隐式：*1、-“”、/1
+number-->string：
+强制：String
+隐式： +“”
+37、盒子模型有哪些、box-sizing中content-box、border-box的区别
+w3c标准盒模型、ie怪异盒模型
+正常盒模型，是指块元素box-sizing属性为content-box的盒模型。一般在现代浏览器中使用的都是正常盒模型content-box，它也是标准 w3c 盒子模型。
+怪异盒模型，是指块元素box-sizing属性为border-box的盒模型。一般在IE浏览器中默认为这种怪异盒模型，但是由于其自身的特殊性，手机页面中也有使用怪异盒模型。
+正常盒模型是指：盒模型的大小content，padding，border，并且先做才content.。
+正常盒模型的大小会以内容优先自动扩展，内部子元素超过父元素给定的大小，会将父元素撑大。
+怪异盒模型是先做盒。然后添加border，padding，最后做content。即保证盒模型优先，先做盒再放内容，不管内容是否放得下，一般手机上用的更多。
+更通俗的说，怪异盒模型中，父元素的盒模型确定，子元素是无法撑开父元素的盒模型，只能在盒模型剩余空间展示。
+38、响应式布局
+设置视口、媒体查询、百分百布局、弹性盒布局
+39、原生js封装方法实现符号代替选择器（类似JQ）
+function $(id){
+				return document.getElementById(id)
+			}
+40、eval的用法
+把eval中包含的字符串按照JS来执行
+41、str = "aadafdsafdsagafkdsafj121"输出重复次数最多的字符和次数？
+String.prototype.uq = function(){
+		var obj={},arr=[],maxCount,seStr;
+		for (var i=0;i<this.length;i++) {
+			if(!obj[this[i]]){
+				obj[this[i]] = 1;
+			} else {
+				obj[this[i]] += 1;
+			}
+		}
+		for (var k in obj) {
+			if(obj.hasOwnProperty(k)){
+				arr.push(obj[k]);
+			}
+		}
+		maxCount = Math.max.apply(null,arr);
+		for (var j in obj) {
+			if(obj.hasOwnProperty(j)){
+				if(obj[j]==maxCount){
+					seStr = j;
+				}
+			}
+		}
+		this.maxCount = maxCount;
+		this.seStr = seStr;
+		return this;
+	}
+	var str = "aaafdsgfdgfgtrefvcxg";
+	var rs = str.uq();
+	alert("最多字符："+rs.seStr+"出现次数："+rs.maxCount)
+42、数组 arr = [12,23,44,2,3,4,67] 从大到小排序，字典排序的方法
+   function sort(a) {//排序
+    	    var i = j = t = 0;
+    	  for (i = 0; i < a.length; i++) {
+     	   for (j = 0; j < a.length; j++) {
+      	         if (a[i] >= a[j]) {
+            	     t = a[i];
+            	     a[i] = a[j];
+            	        a[j] = t;
+            	    }
+          	  }
+      	  }
+   	     return a;
+    }
+43、浏览器事件循环
+JavaScript语言的一大特点就是单线程，单线程就意味着，所有任务需要排队，前一个任务结束，才会执行后一个任务。如果前一个任务耗时很长，后一个任务就不得不一直等着。
+主线程从"任务队列"中读取事件，这个过程是循环不断的，所以整个的这种运行机制又称为Event Loop（事件循环）。
+44、px和rem的区别，使用环境
+px是一个绝对字体大小，rem是相对与html的字体大小
+我们平常在使用长度单位都会使用px，但是在进行响应式布局的时候，需要用rem
+45、冒泡和捕获
+（1）冒泡型事件（从里到外）：事件按照从最特定的事件目标到最不特定的事件目标(document对象)的顺序触发。
+（2）捕获型事件（从外到里）：事件从最精确的对象(document 对象)开始触发，然后到最精确(也可以在窗口级别捕获事件，不过必须由开发人员特别指定)。
+（3）DOM事件流：同时支持两种事件模型：捕获型事件和冒泡型事件，但是，捕获型事件先发生。两种事件流会触及DOM中的所有对象，从document对象开始，也在document对象结束。
+46、写1个promise的实例并调用它
+var p=new Promise(function(resolve,eject){	    resolve("ok");    	});	p.then(function(value){console.log(val)},		 function(err)(console.log(err))       	);
+47、 给一个元素你，在父级没有给宽高的情况下你是怎么让他居中。
+水平居中：1、子级inline-block、父级text-align:center
+特点：适应性好，IE6、IE7不兼容inline-block。text-align:center会导致子元素的内容也居中。
+ 2、table+margin
+特点：只需要对子元素设置，IE6、IE7不支持table，
+ .child{        display: table;/*宽度跟内容变化*/
+ margin: 0 auto; }
+3、absolute+transform
+特点：子元素不会影响其他元素，transform是CSS3内容，不兼容IE6、IE7、IE8。
+4、flex+justify-content
+特点：只对父容器设置，是CSS3内容，不兼容IE6、IE7、IE8。
+垂直居中：类似
+1、table-cell+vertical-align
+2、absolute+transform
+3、flex+align-items
+48、给3个元素你，你是怎么让它在一行中分配均匀。
+给父级元素设置display: flex;justify-content: space-around;
+http://www.cnblogs.com/dushao/p/5999563.html
+49、数据类型判断
+typeof、instanceof、 constructor、 prototype、 $.type()/jquery.type(),
+typeof返回值：
+undefined、function、object、number、string、boolean
+50、this指向问题
+<button onclick="getName()">点击</button>
+		<script>
+			console.log(this);
+			function getName(){
+				console.log(this);
+			}
+			function getName2(){
+				console.log(this);
+				this.name = function(){
+					console.log(this);
+				}
+			}
+			var oc = new getName2();
+			setTimeout(function(){
+				console.log(this);
+			},0);
+			console.log(oc.name);
+			//打印内容
+		</script>
+51、离线缓存
+1.在index.html里加上<html manifest="test.manifest">
+2.manifest清单格式如下
+3、CACHE MANIFEST		#上面一句必须		#v1.0.0		#需要缓存的文件		CACHE:		a.js		b.css		#不需要缓存的文件		NETWORK:		*		#无法访问页面		FALLBACK:		404.html
+3.manifest文件的mime-type必须是 text/cache-manifest类型
+ 注意点：
+   　　1.对于每个index.html?id=1或index.html?id=2都会分别缓存index.html页面，可以通过chrome浏览器Resources/Application Cache观察
+   　　2.如果想更新缓存内容，只要修改下manifest文件即可，如改版本号v1.0.1
+4.离线存储如果资源有更新，可以通过如下代码来监听，但第一次加载还会是原来的版本
+52、window.onload 和jquery中 ready的区别
+1.执行时间
+        window.onload必须等到页面内包括图片的所有元素加载完毕后才能执行。
+        $(document).ready()是DOM结构绘制完毕后就执行，不必等到加载完毕。
+2.编写个数不同
+         window.onload不能同时编写多个，如果有多个window.onload方法，只会执行一个
+         $(document).ready()可以同时编写多个，并且都可以得到执行
+3.简化写法
+         window.onload没有简化写法
+         $(document).ready(function(){})可以简写成$(function(){});
+
+
+三、jquery
+1、jq用过哪些插件，自己写过哪些插件
+data 轮播图   写过一些简单的方法
+jquery常用插件：
+1、jquery.ajax upload.js  上传文件
+2、echarts.js   百度图表插件
+3、jquery.validator.js  校验插件
+4、jquery].datepick.js 日期插件
+5、百度分享插件
+6、iscroll.js  加载列表 和 无限滚动
+7、lazyload.js  图片懒加载
+8、swiper.js 滑屏/轮播插件
+2、jq获取有id的table第二行
+$("td").click(function(){
+  //td的id
+  alert($(this).attr("id"));
+  //tr的id
+  alert($(this).parent().attr("id"));
+});
+3、jq选择器有哪些
+$.(id)\$.(class)\$.(标签)
+4、用jquery框架的时候，怎么获得样式里定位的left或top值
+offsetLeft
+offsetTop
+5、jquery中的prop()和attr()的区别
+对于HTML元素本身就带有的固有属性，在处理时，使用prop方法。
+对于HTML元素我们自己自定义的DOM属性，在处理时，使用attr方法。
+四、bootstrap
+1、你对bootstrap框架的理解
+bootstrap是最受欢迎的HTML、CSS和JS框架，用于开发响应式布局、移动设备优先的WEB项目，特点是简洁、灵活、高效；
+2、Bootstrap有什么优缺点，它与element ui 的区别。
+优点：界面美观、省时
+缺点：界面死板、框架大；
+bootstrap是基于jquery的框架		element ui是基于vue的库
+
+五、vue与angular
+1、vue的功能特点
+组件化、轻量级、渐进式、数据双向绑定
+路由、混合、过渡、生命周期（钩子）、指令、插件、依赖
+2、不同页面怎么实现交互，通信，自己写过插件吗
+vuex   写过，ajax的url插件
+3、vue实现延时和异步机制
+
+4、vuex的好处、缺点
+优点：简洁、方便管理；
+缺点：只能适用于vue
+5、说说模块化开发有什么好处，什么是模块化开发，amd是什么，怎么写
+方便管理、互不干扰。
+     模块化开发意义在于最大化的设计重用，以最少的模块，零部件，更快速满足更多的个性化需求。
+amd是异步模块加载，cmd是同步模块加载。
+6、问项目vue的所有流程，把所有vue的搭建咋么做的流程说出来，直到上架
+安装nodejs  全局安装vue-cli脚手架 全局安装webpack 创建一个基于webpack模板的新项目     进入新项目 安装依赖  运行项目 项目完成后通过npm run build打包给运维
+7、vue的路由
+8、vue怎么打包的，打包之后发送给谁。
+npm run build  运维
+9、vue的数据双向绑定的原理是什么？对vue有自己的理解，有深入了解低层次的原理吗？
+vue使用definePrototype指令定义属性，通过监听这个属性的变化实现数据双向绑定
+10、vue是怎么实现传值的
+通过props bus vuex
+为什么vue中bus能够实现父子组件的传递
+通过原型链继承的方式，所有的方法都绑定到原型链上，通过引用的方式，实现监听
+11、angular相对以前框架有什么优点，指令关系
+12、有了解过vuejs的源码吗？会写插件吗？会的话：比如啥啥插件怎么做的？
+13、vue的钩子有哪些？
+beforeCreate 、created、beforeMount、mounted、beforeUpdate、update、
+beforeDestroy、destroy
+14、Vue框架为什么不能支持IE9以下
+vue是专门针对移动端开发的框架，从一开始就不支持ie9以下
+15、vue全局事件怎么卸载，不卸载有什么影响
+	bus\vuex $off
+16、angular 与 vue 的区别
+1.复杂性：在 API 与设计两方面上 Vue.js 都比 Angular 1 简单得多
+2.灵活性和模块化：Vue.js 是一个更加灵活开放的解决方案。
+3.数据绑定：Angular 1 使用双向绑定，Vue 在不同组件间强制使用单向数据流。这使应用中的数据流更加清晰易懂。
+4.指令与组件：在 Vue 中指令和组件分得更清晰。指令只封装 DOM 操作，而组件代表一个自给自足的独立单元 —— 有自己的视图和数据逻辑。在 Angular 中两者有不少相混的地方。
+5.性能：Vue 有更好的性能，并且非常非常容易优化，因为它不使用脏检查。
+17、vue实现吐丝怎么操作
+ 通过插件，调用插件，传需要
+18、在vue页面中，通过用户输入url值，如果未登陆则跳到登陆页面，登陆后直接跳到输入的url页面上
+19、在tab页面上，当切换tab页面时，怎么保存子组件的数据
+20、vuex的用法，怎么用
+21、怎么修改模块
+22、js中的重构
+1、将数组的长度进行存储，循环时就不用每次去读取一次数组长度，从而提升性能
+js2、中所有 非空字符 作布尔运算时，都会返回 true，反之返回 false。 （空格 属于非空字符）
+3、js中所有 非零 数字作布尔运算时，都会返回 true， 反之返回 false。
+4、多层条件嵌套，进行 转换 或 拆分。
+5、多个变量的定义，写一个 var 即可，遵循的原则：被赋值的在前面，只是进行声明放后面（d 在最后）
+6、尽可能的减少DOM操作，将DOM操作放在循环体之外，数据处理好后，只执行一次DOM操作即可。
+7、避免使用 连等号 声明赋值变量。js基础好点的同学都知道，这里存在着一个坑： b 会被声明为全局变量，意思就是在 test() 方法之外b也是可以被访问到的。  全局变量是不推荐使用的，容易污染环境。
+23、node.js的用法
+24、vue的生命周期有什么用。
+在之前基础上对组件进行了生命周期的加工(初始化、获取资源、渲染、更新、销毁等)，理顺了组件的各个阶段，有助于对组件实现(从初始化到销毁)的理解。 并且借助于组件各个阶段的钩子可以对组件有更好的利用和扩展。
+25、vue里面的methods与computed有什么区别，你获取的数据是放在写在那里的
+computed是在dom加载后马上执行的。而methods中的函数，则必须要有一定的触发条件。
+computed中的function不能带参，methods中的function可以.而watch肯定会有两个参数，val和oldVal。
+26、$router 有用过吗？ filter有用过吗？
+27、vue你是怎么传值的，传值的方式有多少种，父子传值用什么来传，跨组件用什么来传。
+通过props、bus、vuex，父子传值一般用props，跨组件可以用bus和vuex，
+大型项目用vuex传值，小型项目用bus
+28、angular 与 vue 最大的好处
+实现前端和后台的分离
+29、angular依赖注入有哪些方法？
+value、factory、service、provider、constant，用于控制器之间的传值，
+value可以改变，constant传的是常量不能修改
+30、$scope作用
+所有的应用都有一个根作用域 $rootScope，它可以作用在 ng-app 指令包含的所有 HTML 元素中。
+$rootScope 可作用于整个应用中。是各个 controller 中 scope 的桥梁。用 rootscope 定义的值，可以在各个 controller 中使用。
+六、requirejs
+1、用require框架怎么定义模块，要讲比较详细（里面的书写格式等）
+2、用require怎么做项目，讲讲大概流程
+
+3、require框架一般会和哪些框架一起使用
+jquery、touch、text、underscore、zepto4、requirejs的理解
+异步模块定义AMD模式，
+先加载依赖，再执行过程，按需加载，局部刷新，组织管理大型项目，模块式开发
+
+七、nodejs
+http://www.jianshu.com/p/42e11515c10f
+1、怎么压缩代码，对webpack怎么理解;
+webpack -p;WebPack可以看做是模块打包机，它做的事情是，分析你的项目结构，找到JavaScript模块以及其它的一些浏览器不能直接运行的拓展语言（Scss，TypeScript等），并将其打包为合适的格式以供浏览器使用。
+Webpack的强大功能
+1、生成Source Maps（使调试更容易）devtool
+2、使用webpack构建本地服务器 devserver
+3、Loaders
+4、Babel
+5、CSS预处理器
+6、插件（Plugins）
+八、ajax请求
+1、获取数据的类型是什么，ajax里面主要有什么、怎么获取后端数据。
+string，核心对象，
+2、get和post的区别，
+ 1》传输方式的区别（name属性）
+Get通过url地址传输(参数会跟在url后面以？连接，多个参数之间以&连接，存在安全隐患)
+Post通过浏览器内部传输（参数会放在请求头里面）
+        2》传输数据量
+Get有数据量限制2M，每个浏览器都不同
+Post理论上无限
+3》用途
+get通常用作数据的获取
+post通常用作数据的提交
+3、上传的数据除了ajax之外还有什么上传方式。  from(submit)，它是具体用来传输什么数据的。
+4、ajax参数
+5、同步与异步区别
+同步是阻塞方式，是从上往下逐步加载，会阻塞后续代码的运行
+异步是非阻塞方式，不会阻塞后续代码的运行
+6、ajax怎么调用
+7、自动化工具用过哪些，都用了什么功能
+svn  git
+8、underscore有用什么功能
+数据双向绑定
+9、200,401,402,403,404,500什么含义
+  200  请求成功
+	302  在其他地址发现了请求数据
+	304  客户端已经执行了GET，但文件未变化
+	403  请求不允许
+	404  没有发现文件、查询或URl
+	500  服务器产生内部错误
+10、chrome怎么调试
+通过打印或者打断点的方式（debugger）
+11、怎么传输数据到后台
+ send()
+12、请求数据延时怎么弄
+加定时器
+13、ajax了解，如何实现异步，什么时候用到同步？（a，b，c三个请求，a和b并列，c依赖a和b，怎么做？）
+a和b用同步，c用异步
+14、当页面异步请求，多个IP请求后台数据，怎么在不修改后端数据的情况下跨域（jsonp除外）
+代理服务器
+九、兼容问题
+1、h5，css兼容问题，怎么解决
+浏览器渲染引擎和脚本渲染	 padding、图片、高度、浮动
+2、前端常见兼容问题和解决方法
+1、padding
+2、高度     给百分比
+3、ie浮动，magin产生的双倍距离    display:inline
+4、清除浮动    clear：both
+5、居中问题    margin: 0 auto;
+6、列表类
+7、显示类
+1. display:block,inline两个元素
+display:block; //可以为内嵌元素模拟为块元素
+display:inline; //实现同一行排列的的效果
+display:table; //for FF,模拟table的效果
+8、图片类
+9、min-height最小高度的实现    height：auto！important
+10、web标准中无法设置IE浏览器滚动条颜色
+3、前端优化有哪些
+1、减少HTTP请求
+2、使用内部发布网络（CDN）
+3、添加本地缓存（把静态资源加载到localstorage）
+4、压缩资源文件
+5、将css样式表放在顶部，把javascript放在底部
+6、避免使用CSS表达式
+7、配置Etag，推荐使用manifes的方式缓存
+8、减少DNS查询
+9、使用外部链接CSS样式表和javascript
+10、精简javascript（移除不必要的字符减少js文件大小，包括注释、不必要的空白字符）
+十、移动端
+1、制作移动端时遇到的哪些问题，怎么解决；
+2、对IOS的理解；
+苹果针对ipad、iphone移动端的操作系统		ipad\iphone operation system		pc机操作系统：Mac os
+3、移动端的点击事件为什么会有300ms的延迟	    click会比touch的tap事件延迟300ms执行
+4、问了ios和安卓的区别，移动端开发中踩过的坑有哪些
+1、点击300ms延迟 解决：用tap代替click
+2、事件穿透  解决：不要把click和tap混用
+3、离线缓存更新成功后必须刷新页面才能显示新的修改（写个全局的方法，监听updateready后，主动帮用户刷新一次页面）;
+安卓4、浏览器看背景图片，有些设备会模糊。  解决：使用2x的背景图来代替img标签
+5、iphone及ipad下输入框默认内阴影
+Element{
+ -webkit-appearance: none;
+}
+iosandroid6、和下触摸元素时出现半透明灰色遮罩
+ Element {
+ -webkit-tap-highlight-color:rgba(255,255,255,0)
+}
+7、active兼容处理 即 伪类 :active 失效
+方法一：body添加ontouchstart
+方法二：js给 document 绑定 touchstart 或 touchend 事件
+5、移动端页面布局的四种模式http://www.cnblogs.com/jide/p/7051006.html
+1、用流式布局（百分比布局）
+2、用rem布局
+3、淘宝的lib-flexible方案
+4、视口viewport布局
+6、mintUI中的组件、插件用过吗？有哪些？在移动端开发的时候，是用的原生多还是框架
+	mintUI是基于 Vue.js 的移动端组件库
+http://blog.csdn.net/gertyy/article/details/52764527
+7、web前端开发的几种布局方式
+1、静态布局（Static Layout）
+2、弹性布局
+3、自适应布局（Adaptive Layout）
+4、流式布局（Liquid Layout）
+5、响应式布局（Responsive Layout）
+
+十一、其他
+1、浏览器js引擎给js配置了什么对象
+JS引擎负责对JavaScript进行解释、编译和执行，以使网页达到一些动态的效果。
+window\navigator\screen\location\document
+2、讲一讲AMD规范和CMD规范
+AMD 是 RequireJS 在推广过程中对模块定义的规范化产出。CMD 是 SeaJS 在推广过程中对模块定义的规范化产出。
+二者推崇的代码风格不同，CMD 推崇依赖就近，AMD 推崇依赖前置
+对于依赖的模块，AMD 是提前执行，CMD 是延迟执行
+二者最大的区别在于factory回调的执行时机不同
+3、你是怎么对优化页面性能的
+1、按需加载资源，并异步请求
+	2、减少http的请求，减小服务器返回的ajax数据
+	3、合理的利用网页及数据缓存
+	4、压缩网页代码，合并Js文件和CSS
+	5、进行图片压缩或整合
+	6、大量图片可使用懒加载
+	7、考虑CDN及分布式站点
+4、代码优化怎么做
+1、减少HTTP请求
+2、使用内部发布网络（CDN）
+3、添加本地缓存（把静态资源加载到localstorage）
+4、压缩资源文件
+5、将css样式表放在顶部，把javascript放在底部
+6、避免使用CSS表达式
+7、配置Etag，推荐使用manifes的方式缓存
+8、减少DNS查询
+9、使用外部链接CSS样式表和javascript
+10、精简javascript（移除不必要的字符减少js文件大小，包括注释、不必要的空白字符）
+5、离线缓存怎么实现的
+离线缓存是指在有网络的状态下将从服务器获取的网络数据，如Json 数据缓存到本地，在断网的状态下启动APP时读取本地缓存数据显示在界面上，常用的APP（网易新闻、知乎等等）都是支持离线缓存的，这样带来了更好的用户体验。
+如果能够在调用网络接口后自动缓存返回的Json数据，下次在断网状态下调用这个接口获取到缓存的Json数据的话，那该多好呢？Volley做到了这一点。
+6、列表图，树状图是你是用插件做还是自己写
+插件
+7、web跨站攻击有哪些，举一个例子说说怎样避免？
+  xss,sql
+跨站脚本攻击（Cross Site Scripting）是指攻击者利用网站程序对用户输入过滤不足，输入可以显示在页面上对其他用户造成影响的HTML代码，从而盗取用户资料、利用用户身份进行某种动作或者对访问者进行病毒侵害的一种攻击方式。为了与层叠样式表（Cascading Style Sheets）的缩写CSS区分开，跨站脚本攻击通常简写为XSS。
+1、完善的输入和输出检查
+2、利用HttpOnly
+8、前后台数据是通过什么加密的？	md5,aes
+http://baike.baidu.com/link?url=GyI9mzXDW-KcT7y_MV4unzYJsN2vtmTXVH7aeOMDigSyOF0YdEZOgipiAWEaUffBrmoWLlXyKMgCSKekHM-H0K#2
+9、怎样避免页面的重绘和重排
+1.将多次改变样式属性的操作合并成一次操作。
+2.将需要多次重排的元素，position属性设为absolute或fixed，这样此元素就脱离了文档流，它的变化不会影响到其他元素。例如有动画效果的元素就最好设置为绝对定位。
+3.在内存中多次操作节点，完成后再添加到文档中去。例如要异步获取表格数据，渲染到页面。可以先取得数据后在内存中构建整个表格的html片段，再一次性添加到文档中去，而不是循环添加每一行。
+4.由于display属性为none的元素不在渲染树中，对隐藏的元素操作不会引发其他元素的重排。如果要对一个元素进行复杂的操作时，可以先隐藏它，操作完成后再显示。这样只在隐藏和显示时触发2次重排。
+5.在需要经常取那些引起浏览器重排的属性值时，要缓存到变量。
+10、mvc和mvvm的区别，你对mvc的理解，mvc的优点
+	模型 视图 控制器    【事件驱动视图】
+模型 视图 视图模型  【数据驱动视图】
+11、怎样使低版本浏览器可以使用es6语法糖
+ 利用babel插件对es6编译成es5的写法即可
+12、自动化构建工具gulp和grunt的区别
+易用： Gulp相比Grunt更简洁，而且遵循代码优于配置策略，维护Gulp更像是写代码。
+高效： Gulp相比Grunt更有设计感，核心设计基于Unix流的概念，通过管道连接，不需要写中间文件。
+高质量： Gulp的每个插件只完成一个功能，这也是Unix的设计原则之一，各个功能通过流进行整合并完成复杂的任务。例如：Grunt的imagemin插件不仅压缩图片，同时还包括缓存功能。他表示，在Gulp中，缓存是另一个插件，可以被别的插件使用，这样就促进了插件的可重用性。目前官方列出的有673个插件。
+易学： Gulp的核心API只有5个，掌握了5个API就学会了Gulp，之后便可以通过管道流组合自己想要的任务。
+流 使用Grunt的I/O过程中会产生一些中间态的临时文件，一些任务生成临时文件，其它任务可能会基于临时文件再做处理并生成最终的构建后文件。而使用Gulp的优势就是利用流的方式进行文件的处理，通过管道将多个任务和操作连接起来，因此只有一次I/O的过程，流程更清晰，更纯粹。
+代码优于配置： 维护Gulp更像是写代码，而且Gulp遵循CommonJS规范，因此跟写Node程序没有差别。
+13、svn代码写在哪里
+首先从svn服务器中下载项目，修改后提交到服务器
+14、echarts用过吗？echarts中饼状图哪些参数可以修改，说出参数名
+15、讲讲常用的主流浏览器的内核机制
+ 1.Trident内核(微软IE)
+		2.Webkit内核 (谷歌Chrome,苹果safari)
+		3.Gecko内核  (firefox火狐）
+		4.Presto内核 (Opera)
+16、说说nodejs的优缺点
+17、你对微信程序项目的理解？你讲讲微信小程序的特点吧？
+不占空间不碍眼；没有入口，有好有坏
+18、浏览器渲染页面的机制
+19、http了解吗？输入网址之后页面的动作步骤
+
+20、Websocket的理解
+	WebSocket协议是基于TCP的一种新的网络协议，是一种实时连接协议，实现了浏览器与服务器全双工(full-duplex)通信——允许服务器主动发送信息给客户端。
+21、浏览器内存泄漏
+	内存泄漏（Memory Leak）是指程序中己动态分配的堆内存由于某种原因程序未释放或无法释放，造成系统内存的浪费，导致程序运行速度减慢甚至系统崩溃等严重后果。(闭包、对象的相互调用、死循环)
+	1、给DOM对象添加的属性是一个对象的引用
+	2、DOM对象与JS对象相互引用
+	3、给DOM对象用attachEvent绑定事件
+	4、从外到内执行appendChild。这时即使调用removeChild也无法释放
+	5、反复重写同一个属性会造成内存大量占用(但关闭IE后内存会被释放）
+23、Cookie和session的优点缺点
+ cookie是前端用来存储数据
+	session是后端存储数据
+24、Jsonp,为什么不是ajax
+JSONP是解决跨域问题，ajax存在跨域问题
+25、如何用CSS分别单独定义IE6、7、8的width属性？
+ width:8px\0;    /*ie8*/
+    +width:7px;        /*ie7*/
+    _width:6px;       /*ie6*/
+
+26.ajax？同步与异步的区别，解决跨域的方法？
+
+27.写出cookies、sessionStorage和localStorage的区别？
+28、给你个二维码图片你，你是怎么能让它不失真。
+
+29、你封装过哪些函数。
+
+30、你处理过哪些大型的数据。你是怎么处理的
+31、JS的缺点是什么？
+1.非面向对象编程语言
+2.作用域的问题
+3.this、变量提升（var功能的缺陷）
+32、项目开发流程
+  业务部门---制作需求说明书---召集各部门开评审会---复审会议（提建议）---需求说明书（需求规格书）--- 开发部门开项目实施会（确立开发时间）----
+项目上生产（晚上12点之后）--->前端（2个）   后端（2个）   测试（2个）   运维（3个）上服务     没加班的人，电话畅通
+
+33、项目实战
+模拟下拉列表--为了风格的统一
+验证码实现---调后端接口，后端会返回一个随机码，根据随机码请求图片
+加密---md5（在设计方面来讲是不可逆的）、base64（图片、加密算法）、
+aes加密（非对称加密）
+apache传输数据不大于8k   setpostSize：0 ==无限大
+传递大数据怎么做（如图片）
+把图片通过base64编码成字符串或者直接传图片或文件，特别大的图片可以通过拆分			（wm.rar） 通过ftp（文件传输协议）协议传递
+联系商家（聊天设计）：scockedio.js插件基于websocket（h5），在ie8以下转换成ajax
+34、面向对象的理解
+面向对象具有四个基本特征：抽象、继承、封装、多态性
+优点：
+1、开发时间短，效率高，可靠性高，所开发的程序更强壮
+2、应用程序更易于维护、更新和升级、继承和封装使得应用程序的修改带来的影响更加局部化。
+

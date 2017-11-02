@@ -1,0 +1,15 @@
+nav {
+  border: 1px solid #ccc;
+  border-left: 0px;
+  border-right: 0px;
+}
+
+nav div {
+  background: #000;
+}
+
+nav div span {
+  color: red;
+  font-size: 23px;
+  display: block;
+}

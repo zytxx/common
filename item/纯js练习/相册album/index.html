@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>相册album</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #album {
+            margin: 50px auto;
+            width: 960px;
+            height: 630px;
+            position: relative;
+            /*border: 1px solid red;*/
+        }
+
+        li {
+            list-style-type: none;
+            float: left;
+            margin: 15px;
+            box-shadow: 2px 2px 5px 0px #333;
+            border-radius: 5px;
+        }
+
+        img {
+            /*去掉img白边*/
+            display: block;
+        }
+
+        #mask {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: rgba(000, 000, 000, 0.7);
+            display: none;
+        }
+
+        #big {
+            width: 650px;
+            height: 406px;
+            position: absolute;
+            border: 10px solid #fff;
+            display: none;
+        }
+
+        #img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #left, #right {
+            position: absolute;
+            top: 180px;
+            cursor: pointer;
+        }
+        #left {
+            left: -60px;
+        }
+
+        #right {
+            right: -60px;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="album">
+        <ul>
+            <li><a href="images/big1.jpg"><img src="images/s1.jpg" alt=""></a></li>
+            <li><a href="images/big2.jpg"><img src="images/s2.jpg" alt=""></a></li>
+            <li><a href="images/big3.jpg"><img src="images/s3.jpg" alt=""></a></li>
+            <li><a href="images/big4.jpg"><img src="images/s4.jpg" alt=""></a></li>
+            <li><a href="images/big5.jpg"><img src="images/s5.jpg" alt=""></a></li>
+            <li><a href="images/big6.jpg"><img src="images/s6.jpg" alt=""></a></li>
+            <li><a href="images/big7.jpg"><img src="images/s7.jpg" alt=""></a></li>
+            <li><a href="images/big8.jpg"><img src="images/s8.jpg" alt=""></a></li>
+            <li><a href="images/big9.jpg"><img src="images/s9.jpg" alt=""></a></li>
+        </ul>
+    </div>
+    <div id="mask"></div>
+    <div id="big">
+        <img src="images/dirl.png" alt="" id="left">
+        <img src="images/dirr.png" alt="" id="right">
+        <img src="" alt="" id="img">
+    </div>
+</div>
+<script>
+    var links = document.getElementsByTagName('a');
+    var img = document.getElementById('img');
+    var big = document.getElementById('big');
+    var mask = document.getElementById('mask');
+    var left = document.getElementById("left");
+    var right = document.getElementById("right");
+    var cur = 0;
+    //不能用for in  记住   dom对象数组不要用for in
+    for (var i = 0; i < links.length; i++) {
+        links[i].index = i;
+        links[i].addEventListener('click', function (ev) {
+            //阻止a标签的默认跳转
+            ev.preventDefault();
+            //这里用this
+            img.src = this.href;
+            //console.log(this.index);
+            cur = this.index;
+            big.style.display = 'block';
+            mask.style.display = 'block';
+            big.style.left = big.style.top = "50%";
+            //利用负margin  居中
+            big.style.marginLeft = -big.offsetWidth/2 + "px";
+            big.style.marginTop = -big.offsetHeight/2 + "px";
+        })
+    }
+    left.addEventListener('click',function () {
+        if(cur<=0){
+            cur = links.length
+        }
+        cur--;
+        img.src = links[cur].href;
+    })
+    right.addEventListener('click',function () {
+        cur++;
+        if(cur>=links.length){
+            cur = 0
+        }
+        img.src = links[cur].href;
+    })
+    mask.addEventListener('click',function(){
+        mask.style.display = 'none';
+        big.style.display = 'none';
+    })
+
+
+</script>
+</body>
+</html>

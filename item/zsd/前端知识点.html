@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>知识点</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #eee;
+        }
+
+        h2 {
+            display: block;
+            margin: 30px auto;
+            text-align: center;
+        }
+
+        pre {
+            columns: 2;
+            column-gap: 30px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            padding: 20px;
+        }
+
+        pre span {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        strong {
+            font-size: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div>
+    <h2>知识点</h2>
+    <pre>
+<strong>HTML&CSS</strong>
+
+<span>1.常用哪几种浏览器测试？有哪些内核？兼容性写法是？</span>
+(Q1)浏览器：IE Chrome Firefox Safari Opera
+(Q2)内核：Trident(IE) Gecko(Firefox) Presto(Opera前内核(Opera现已改用Google Chrome的Blink内核)) Webkit(Safari内核,Chrome内核原型,开源)。
+(Q3) -webkit- -moz- -ms- -o- //-ms代表ie内核识别码//-moz代表火狐firefox内核识别码
+    //-webkit代表谷歌chrome/苹果safari内核识别码//-o代表欧朋opera内核识别码
+
+<span>2.说下行内元素和块级元素的区别？行内块元素的兼容性使用？（IE8 以下）</span>
+(Q1)行内元素：会在水平方向排列，不能包含块级元素，设置width无效，height无效(可以设置line-height)，margin上下无效，padding上下无效。
+块级元素：各占据一行，垂直方向排列。从新行开始接着一个断行。
+(Q2)兼容性：display:inline-block;*display:inline;*zoom:1;
+
+<span>3.清除浮动有哪些方式？比较好的方式是哪一种？</span>
+(Q1)（1）父级div定义height。
+（2）结尾处加空div标签clear:both。
+（3）父级div定义伪类:after和zoom。
+（4）父级div定义overflow:hidden。
+（5）父级div定义overflow:auto。
+（6）父级div也浮动，需要定义宽度。
+（7）父级div定义display:table。
+（8）结尾处加br标签clear:both。
+(Q2) 比较好的是第3种方式，好多网站都这么用。
+写法  父元素div{
+       zoom:1;
+       *zoom:1;
+       }
+     div:after{
+              content:'';
+              display:block;
+              height:0;
+              line-height:0;
+              visibility:hidden;
+              clear:both;
+               }
+
+<span>4.Doctype作用？标准模式与兼容模式各有什么区别?</span>
+(Q1) <!DOCTYPE>告知浏览器的解析器用什么文档标准解析这个文档。DOCTYPE不存在或格式不正确会导致文档以兼容模式呈现。
+(Q2) 标准模式的排版和JS运作模式都是以该浏览器支持的最高标准运行。在兼容模式中，页面以宽松的向后兼容的方式显示,模拟老式浏览器的行为以防止站点无法工作。
+
+<span>5.HTML5 为什么只需要写 &lt;!DOCTYPE HTML&gt;?</span>
+HTML5不基于 SGML，因此不需要对DTD进行引用，但是需要doctype来规范浏览器的行为（让浏览器按照它们应该的方式来运行）。
+而HTML4.01基于SGML,所以需要对DTD进行引用，才能告知浏览器文档所使用的文档类型。
+
+<span>6.页面导入样式时，使用link和@import有什么区别？</span>
+（1）link属于XHTML标签，除了加载CSS外，还能用于定义RSS, 定义rel连接属性等作用；而@import是CSS提供的，只能用于加载CSS;
+（2）页面被加载的时，link会同时被加载，而@import引用的CSS会等到页面被加载完再加载;
+（3）import是CSS2.1 提出的，只在IE5以上才能被识别，而link是XHTML标签，无兼容问题。
+（4）link支持使用Javascript控制DOM去改变样式；而@import不支持。
+
+<span>7.介绍一下你对浏览器内核的理解？</span>
+主要分成两部分：渲染引擎(layout engineer或Rendering Engine)和JS引擎。
+渲染引擎：负责取得网页的内容（HTML、XML、图像等等）、整理讯息（例如加入CSS等），以及计算网页的显示方式，然后会输出至显示器或打印机。
+浏览器的内核的不同对于网页的语法解释会有不同，所以渲染的效果也不相同。所有网页浏览器、电子邮件客户端以及其它需要编辑、显示网络内容的应用程序都需要内核。
+JS引擎则：解析和执行javascript来实现网页的动态效果。
+最开始渲染引擎和JS引擎并没有区分的很明确，后来JS引擎越来越独立，内核就倾向于只指渲染引擎。
+
+<span>8.html5有哪些新特性？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？</span>
+(Q1)HTML5 现在已经不是 SGML 的子集，主要是关于图像，位置，存储，多任务等功能的增加。
+1)  拖拽释放(Drag and drop) API
+2)  语义化更好的内容标签（header,nav,footer,aside,article,section）
+3)  音频、视频API(audio,video)
+4)  画布(Canvas) API
+5)  地理(Geolocation) API
+6)  本地离线存储 localStorage 长期存储数据，浏览器关闭后数据不丢失；
+7)  sessionStorage 的数据在浏览器关闭后自动删除
+8)  表单控件，calendar、date、time、email、url、search
+9)  新的技术webworker, websocket, Geolocation
+(Q2)支持HTML5新标签：
+1. IE8/IE7/IE6支持通过 document.createElement 方法产生的标签，可以利用这一特性让这些浏览器支持 HTML5 新标签，
+浏览器支持新标签后，还需要添加标签默认的样式（当然最好的方式是直接使用成熟的框架、使用最多的是html5shiv框架）：
+        <!--[if lt IE 9]>
+        <script> src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"</script>
+        <![endif]-->
+(Q3)DOCTYPE声明的方式是区分HTML和HTML5标志的一个重要因素，此外，还可以根据新增的结构、功能元素来加以区分。
+
+<span>9.简述一下你对HTML语义化的理解？</span>
+用正确的标签做正确的事情。
+html语义化让页面的内容结构化，结构更清晰，便于对浏览器、搜索引擎解析;
+即使在没有样式CSS情况下也以一种文档格式显示，并且是容易阅读的;
+搜索引擎的爬虫也依赖于HTML标记来确定上下文和各个关键字的权重，利于SEO;
+使阅读源代码的人对网站更容易将网站分块，便于阅读维护理解。
+
+<span>10.html5有哪几大功能特点，请分别列出</span>
+语义  多媒体 离线存储 三维，图形，特效  设备通用  性能集成(Worker) 连接(WebSocket) css3
+
+<span>11.css3特性</span>
+选择器  盒模型  背景边框  文字特效  2D/3D转换 动画  多列布局  用户界面
+
+<span>12.前端优化</span>
+页面布局  加载方式  图片加载
+减少http请求
+压缩 html,js,css
+使用缓存
+
+<span>13写出通过样式设置颜色的几种方式，说明它们的不同之处</span>
+Color Name(颜色名称)：用颜色关键字来指定颜色  如 red black white green 等
+HEX： #RRGGBB 或 #RGB 用16进制的正整数来表示     如  #FFFFFF #FFF
+RGB： RGB(R,G,B) 以上三个参数，正整数值的取值范围为：0 - 255。百分数值的取值范围为：0.0% - 100.0%。 如 rgb(0,0,0)
+RGBA：此色彩模式与RGB相同，只是在RGB模式上新增了Alpha透明度。
+HSL： HSL(H,S,L)
+      H：Hue(色调)。0(或360)表示红色，120表示绿色，240表示蓝色，也可取其他数值来指定颜色。取值为：0 - 360
+      S：Saturation(饱和度)。取值为：0.0% - 100.0%
+      L：Lightness(亮度)。取值为：0.0% - 100.0%
+HSLA：此色彩模式与HSL相同，只是在HSL模式上新增了Alpha透明度
+transparent: 用来指定全透明色彩。 RGBA(R,G,B,A)
+currentColor：currentColor是 color 属性的值，具体意思是指：currentColor关键字的使用值是 color 属性值的计算值。
+<strong>Js</strong>
+<span>1.js的数据类型有哪些</span>
+基本数据类型：undefined null bollean number string
+复杂数据类型：数组  对象   array   object
+
+<span>2.typeof检测数据类型会返回些什么值</span>
+返回的都是字符串
+object  string number boolean undefined 函数会返回function
+
+<span>3.数据类型的检测方法 汇总</span>
+    <a href="数据类型检测.html">点击查看</a>
+
+<span>4. DOM怎样添加、移除、移动、复制、创建和查找节点</span>
+创建新节点
+createDocumentFragment()    //创建一个DOM片段
+createElement()   //创建一个具体的元素
+createTextNode()   //创建一个文本节点
+添加、移除、替换、插入
+appendChild()
+removeChild()
+replaceChild()
+insertBefore() //在已有的子节点前插入一个新的子节点
+查找
+getElementsByTagName()    //通过标签名称
+getElementsByName()    //通过元素的Name属性的值(IE容错能力较强，会得到一个数组，其中包括id等于name值的)
+getElementById()    //通过元素Id，唯一性
+
+<span>5.new操作符具体干了什么呢?</span>
+（1）创建一个空对象，并且 this 变量引用该对象，同时还继承了该函数的原型。
+（2）属性和方法被加入到 this 引用的对象中。
+（3）新创建的对象由 this 所引用，并且最后隐式的返回 this 。
+
+<span>6.JSON 的了解？</span>
+JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。它是基于JavaScript的一个子集。数据格式简单, 易于读写, 占用带宽小。
+格式：采用键值对，例如：{'age':'12','name':'back'}
+
+<span>7.js是一种什么样的语言？</span>
+JavaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。
+它的解释器被称为JavaScript引擎，为浏览器的一部分，广泛用于客户端的脚本语言，最早是在HTML（sgml标准通用标记语言下的一个应用）
+网页上使用，用来给HTML网页增加动态功能。
+    弱类型 1+'s'  '1s'
+    动态类型  数据类型会发生变化 不固定
+特点
+1是一种解释性脚本语言（代码不进行预编译）。
+2主要用来向HTML页面添加交互行为。
+3可直接嵌入HTML页面，但写成单独的js文件有利于结构和行为的分离。
+4跨平台特性，在大部分浏览器的支持下，可在多种平台下运行（如Windows、Linux、Mac、Android、iOS等）。
+
+<span>8.json与xml异同</span>
+与 XML 相同之处
+JSON 是纯文本
+JSON 具有"自我描述性"（人类可读）
+JSON 具有层级结构（值中存在值）
+JSON 可通过 JavaScript 进行解析
+JSON 数据可使用 AJAX 进行传输
+与 XML 不同之处
+没有结束标签
+更短
+读写的速度更快
+能够使用内建的 JavaScript eval() 方法进行解析
+使用数组
+不使用保留字
+
+<span>9.阻止事件的冒泡与事件的默认行为</span>
+通过事件对象event
+cancelBubble :阻止冒泡    e.cancelBubble = true; 相当于 e.stopPropagation();
+
+returnValue  :阻止默认行为　 e.returnValue = false; 相当于 e.preventDefault();
+
+<span>10.解释一下ajax是什么</span>
+AJAX是基于现有的Internet标准，全称Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。
+特点：AJAX 最大的优点是在不重新加载整个页面的情况下，可以与服务器交换数据并更新部分网页内容。
+var xmlhttp;
+if(window.XMLHttpRequest){  // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+    xmlhttp=new XMLHttpRequest();
+    }else{                  // IE6, IE5 浏览器执行代码
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+   }
+xmlhttp.onreadystatechange=function(){
+    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+    var json = JSON.parse(xmlhttp.responseText);
+    console.log(json)
+    }
+}
+xmlhttp.open("POST","url.php?q=",true);
+xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded"); //post需要这句  get不需要
+xmlhttp.send('user=teacher&pwd=12345678');
+<span>11.面向对象</span>
+就会有类
+封装 继承 多态
+js 是通过基于原型的方式实现面向对象
+什么是原型链。说白了，其实就是有限的实例对象和原型之间组成有限链，就是用来实现共享属性和继承的
+<span>12.this指向问题</span>
+我们说过this 是在运行时进行绑定的，并不是在编写时绑定，它的上下文取决于函数调
+用时的各种条件。this 的绑定和函数声明的位置没有任何关系，只取决于函数的调用方式。
+当一个函数被调用时，会创建一个活动记录（有时候也称为执行上下文）。这个记录会包
+含函数在哪里被调用（调用栈）、函数的调用方法、传入的参数等信息。this 就是记录的
+其中一个属性，会在函数执行的过程中用到。
+this 实际上是在函数被调用时发生的绑定，它指向什么完全取决于函数在哪里被调用。
+<span>13.原型链和继承</span>
+        js 是基于原型实现继承的
+        function Person(){}
+        let person = new Person;
+        person.constructer === Person.prototype.constructer
+
+<span>14.cookie和本地存储localStorage,sessionStorage</span>
+        共同点：都是保存在浏览器端，且同源的
+区别    cookie数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递。
+        而sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。
+        cookie数据还有路径（path）的概念，可以限制cookie只属于某个路径下。存储大小限制也不同，cookie数据不能超过4k，
+        同时因为每次http请求都会携带cookie，所以cookie只适合保存很小的数据，如会话标识。
+        sessionStorage和localStorage 虽然也有存储大小的限制，但比cookie大得多，可以达到5M或更大。
+        数据有效期不同，sessionStorage：仅在当前浏览器窗口关闭前有效，自然也就不可能持久保持；
+        localStorage：始终有效，窗口或浏览器关闭也一直保存，因此用作持久数据；
+        cookie只在设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭。
+        作用域不同，sessionStorage不在不同的浏览器窗口中共享，即使是同一个页面；
+        localStorage 在所有同源窗口中都是共享的；
+        cookie也是在所有同源窗口中都是共享的。
+
+<span>15.同源策略 非同源就是跨域 请求数据</span>
+        域名和端口一致  才是同源
+<span>16.事件委托</span>
+        动态绑定
+        将事件交给父元素  减少事件绑定次数
+        原理：事件冒泡
+<span>17.什么是闭包</span>
+        函数嵌套函数 被调用的函数使用到了调用函数的变量  使得该变量不能被释放  从而形成闭包
+        闭包计数器   闭包tab标签页切换
+<span>18.事件绑定与解绑</span>
+        div.onclick = function(){}
+        div.onclick = null
+        addEventListener()
+        removeEventListener() 不能移除匿名函数的绑定
+     IE attachEvent
+        detachEvent
+<span>19.MVC，MVVM</span>
+模块化开发的设计理念
+<span>20.get,post 区别</span>
+ get  请求的数据会附在URL之后 以？分隔  多发参数用&连接  受到URL长度限制
+ post 把提交的数据放置在HTTP包体中  理论上不受限制   但一般情况下web服务器还是会限制
+
+ 安全性  get 比较低  容易被缓存
+<span>21.Vue的生命周期钩子</span>
+beforeCreate  created
+beforeMount   mounted
+beforeUpdate  updated
+beforeDestroy destroyed
+
+<span>前端框架</span>
+js框架
+      vue react angular requireJs
+
+UI框架
+      bootstrap WEUI  SUI element iview mintUI
+</pre>
+</div>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js放大镜</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #small {
+            position: relative;
+            top: 20px;
+            left: 30px;
+            width: 425px;
+            height: 245px;
+            border: 1px solid red;
+        }
+
+        #simg {
+            width: 100%;
+            height: 100%;
+        }
+
+        #magnifier {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            /*width: 100px;*/
+            /*height: 60px;*/
+            cursor: move;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+        }
+
+        #big {
+            position: absolute;
+            top: 20px;
+            left: 470px;
+            width: 850px;
+            height: 450px;
+            overflow: hidden;
+            display: none;
+            border: 1px solid red;
+        }
+
+        #middle {
+            position: absolute;
+            top: 300px;
+            left: 30px;
+            width: 425px;
+            height: 245px;
+            overflow: hidden;
+            display: none;
+            border: 1px solid red;
+        }
+
+        #bimg, #mimg {
+            position: absolute;
+            /*width: 1697px;*/
+            /*height:981px ;*/
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="small">
+    <img src="bg.jpg" alt="" id="simg">
+    <span id="magnifier"></span>
+</div>
+<div id="middle">
+    <img src="bg.jpg" alt="" id="mimg">
+</div>
+<div id="big">
+    <img src="bg.jpg" alt="" id="bimg">
+</div>
+<script>
+    window.onload = function () {
+        var small = document.getElementById('small');
+        var big = document.getElementById('big');
+        var middle = document.getElementById('middle');
+        var bimg = document.getElementById('bimg');
+        var mimg = document.getElementById('mimg');
+        var magni = document.getElementById('magnifier');
+        small.addEventListener('mousemove', function (ev) {
+            var scale = 4;
+            magni.style.display = 'block';
+            big.style.display = 'block';
+            middle.style.display = 'block';
+            //鼠标位置  用page比较好
+            var mousex = ev.clientX;
+            var mousey = ev.clientY;
+            //magni.innerText = 'x' + mousex + 'y' + mousey;
+            //放大镜的宽高
+            magni.style.width = parseInt(small.offsetWidth / scale) + 'px';
+            magni.style.height = parseInt(small.offsetHeight / scale) + 'px';
+            //鼠标应该在放大镜正中心
+            //所以放大镜 的 定位 left为 x  right为y
+            var x = mousex - magni.offsetWidth / 2 - small.offsetLeft;
+            var y = mousey - magni.offsetHeight / 2 - small.offsetTop;
+            //设置超出边界问题
+            if (x < 0) {
+                x = 0; //左边界的判断，当超出时将x置为0;
+            }
+            if (x >= small.offsetWidth - magni.offsetWidth) {
+                x = small.offsetWidth - magni.offsetWidth; //右边界的判断，当超出时将x置为Box的宽度减去放大镜的宽度;
+            }
+            if (y < 0) {
+                y = 0; //上边界的判断，当超出时将y置为0;
+            }
+            if (y >= small.offsetHeight - magni.offsetHeight) {
+                y = small.offsetHeight - magni.offsetHeight;  //下边界的判断，当超出时将y置为Box的高度减去放大镜的高度;
+            }
+
+            //设置放大图片宽高  感觉没用
+            bimg.style.width = small.offsetWidth * scale + 'px';
+            bimg.style.height = small.offsetHeight * scale + 'px';
+
+            //放大镜随着鼠标不断改变位置
+            magni.style.left = x + 'px';
+            magni.style.top = y + 'px';
+
+            //大图片也不断的改变位置
+            //同比例放缩，大的盒子图片的放缩比例，当小盒子向右移动的时候，大盒子向左移动同等的比例的宽高，方向是相反的;
+            var left = scale * magni.offsetLeft;
+            var top = scale * magni.offsetTop;
+
+
+            if (top > mimg.offsetHeight - middle.offsetHeight) {
+                top = mimg.offsetHeight - middle.offsetHeight;
+            }
+            if (left > mimg.offsetWidth - middle.offsetWidth) {
+                left = mimg.offsetWidth - middle.offsetWidth;
+            }
+            mimg.style.left = -left + "px";
+            mimg.style.top = -top + "px";
+            //不能出现空白  主要是右边和下边
+            if (top > bimg.offsetHeight - big.offsetHeight) {
+                top = bimg.offsetHeight - big.offsetHeight;
+            }
+            if (left > bimg.offsetWidth - big.offsetWidth) {
+                left = bimg.offsetWidth - big.offsetWidth;
+            }
+            //图片移动方向与鼠标移动方向相反
+            bimg.style.left = -left + "px";
+            bimg.style.top = -top + "px";
+        })
+        small.addEventListener('mouseout', function () {
+            magni.style.display = 'none';
+            big.style.display = 'none';
+            middle.style.display = 'none';
+        })
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>五子棋</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #container {
+            margin: 0 auto;
+            text-align: center;
+            height: 794px;
+            /*背景图片居中  center  左右上下都可以*/
+            background: url(qp1.png) center 40px no-repeat;
+            /*border: 1px solid green;*/
+            background-color: gray;
+
+        }
+
+        p {
+            font-size: 22px;
+        }
+
+        table {
+            margin: 0 auto;
+            width: 620px;
+            height: 620px;
+            border-collapse: collapse;
+        }
+
+        td {
+            /*border: 1px solid red;*/
+        }
+        #renew{
+            display: inline-block;
+            width: 90px;
+            background: #686480;
+            cursor:pointer;
+            border-radius: 20px;
+        }
+        .black {
+            border-radius: 20px;
+            background: rgb(12, 12, 12);
+        }
+
+        .white {
+            border-radius: 20px;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <p>五子棋</p>
+    <table>
+        <tr>
+            <td class="s1-1"></td>
+            <td class="s1-2"></td>
+            <td class="s1-3"></td>
+            <td class="s1-4"></td>
+            <td class="s1-5"></td>
+            <td class="s1-6"></td>
+            <td class="s1-7"></td>
+            <td class="s1-8"></td>
+            <td class="s1-9"></td>
+            <td class="s1-10"></td>
+            <td class="s1-11"></td>
+            <td class="s1-12"></td>
+            <td class="s1-13"></td>
+            <td class="s1-14"></td>
+            <td class="s1-15"></td>
+            <td class="s1-16"></td>
+            <td class="s1-17"></td>
+            <td class="s1-18"></td>
+            <td class="s1-19"></td>
+            <td class="s1-20"></td>
+            <td class="s1-21"></td>
+            <td class="s1-22"></td>
+            <td class="s1-23"></td>
+            <td class="s1-24"></td>
+            <td class="s1-25"></td>
+            <td class="s1-26"></td>
+            <td class="s1-27"></td>
+            <td class="s1-28"></td>
+            <td class="s1-29"></td>
+            <td class="s1-30"></td>
+            <td class="s1-31"></td>
+        </tr>
+        <tr>
+            <td class="s2-1"></td>
+            <td class="s2-2"></td>
+            <td class="s2-3"></td>
+            <td class="s2-4"></td>
+            <td class="s2-5"></td>
+            <td class="s2-6"></td>
+            <td class="s2-7"></td>
+            <td class="s2-8"></td>
+            <td class="s2-9"></td>
+            <td class="s2-10"></td>
+            <td class="s2-11"></td>
+            <td class="s2-12"></td>
+            <td class="s2-13"></td>
+            <td class="s2-14"></td>
+            <td class="s2-15"></td>
+            <td class="s2-16"></td>
+            <td class="s2-17"></td>
+            <td class="s2-18"></td>
+            <td class="s2-19"></td>
+            <td class="s2-20"></td>
+            <td class="s2-21"></td>
+            <td class="s2-22"></td>
+            <td class="s2-23"></td>
+            <td class="s2-24"></td>
+            <td class="s2-25"></td>
+            <td class="s2-26"></td>
+            <td class="s2-27"></td>
+            <td class="s2-28"></td>
+            <td class="s2-29"></td>
+            <td class="s2-30"></td>
+            <td class="s2-31"></td>
+        </tr>
+        <tr>
+            <td class="s3-1"></td>
+            <td class="s3-2"></td>
+            <td class="s3-3"></td>
+            <td class="s3-4"></td>
+            <td class="s3-5"></td>
+            <td class="s3-6"></td>
+            <td class="s3-7"></td>
+            <td class="s3-8"></td>
+            <td class="s3-9"></td>
+            <td class="s3-10"></td>
+            <td class="s3-11"></td>
+            <td class="s3-12"></td>
+            <td class="s3-13"></td>
+            <td class="s3-14"></td>
+            <td class="s3-15"></td>
+            <td class="s3-16"></td>
+            <td class="s3-17"></td>
+            <td class="s3-18"></td>
+            <td class="s3-19"></td>
+            <td class="s3-20"></td>
+            <td class="s3-21"></td>
+            <td class="s3-22"></td>
+            <td class="s3-23"></td>
+            <td class="s3-24"></td>
+            <td class="s3-25"></td>
+            <td class="s3-26"></td>
+            <td class="s3-27"></td>
+            <td class="s3-28"></td>
+            <td class="s3-29"></td>
+            <td class="s3-30"></td>
+            <td class="s3-31"></td>
+        </tr>
+        <tr>
+            <td class="s4-1"></td>
+            <td class="s4-2"></td>
+            <td class="s4-3"></td>
+            <td class="s4-4"></td>
+            <td class="s4-5"></td>
+            <td class="s4-6"></td>
+            <td class="s4-7"></td>
+            <td class="s4-8"></td>
+            <td class="s4-9"></td>
+            <td class="s4-10"></td>
+            <td class="s4-11"></td>
+            <td class="s4-12"></td>
+            <td class="s4-13"></td>
+            <td class="s4-14"></td>
+            <td class="s4-15"></td>
+            <td class="s4-16"></td>
+            <td class="s4-17"></td>
+            <td class="s4-18"></td>
+            <td class="s4-19"></td>
+            <td class="s4-20"></td>
+            <td class="s4-21"></td>
+            <td class="s4-22"></td>
+            <td class="s4-23"></td>
+            <td class="s4-24"></td>
+            <td class="s4-25"></td>
+            <td class="s4-26"></td>
+            <td class="s4-27"></td>
+            <td class="s4-28"></td>
+            <td class="s4-29"></td>
+            <td class="s4-30"></td>
+            <td class="s4-31"></td>
+        </tr>
+        <tr>
+            <td class="s5-1"></td>
+            <td class="s5-2"></td>
+            <td class="s5-3"></td>
+            <td class="s5-4"></td>
+            <td class="s5-5"></td>
+            <td class="s5-6"></td>
+            <td class="s5-7"></td>
+            <td class="s5-8"></td>
+            <td class="s5-9"></td>
+            <td class="s5-10"></td>
+            <td class="s5-11"></td>
+            <td class="s5-12"></td>
+            <td class="s5-13"></td>
+            <td class="s5-14"></td>
+            <td class="s5-15"></td>
+            <td class="s5-16"></td>
+            <td class="s5-17"></td>
+            <td class="s5-18"></td>
+            <td class="s5-19"></td>
+            <td class="s5-20"></td>
+            <td class="s5-21"></td>
+            <td class="s5-22"></td>
+            <td class="s5-23"></td>
+            <td class="s5-24"></td>
+            <td class="s5-25"></td>
+            <td class="s5-26"></td>
+            <td class="s5-27"></td>
+            <td class="s5-28"></td>
+            <td class="s5-29"></td>
+            <td class="s5-30"></td>
+            <td class="s5-31"></td>
+        </tr>
+        <tr>
+            <td class="s6-1"></td>
+            <td class="s6-2"></td>
+            <td class="s6-3"></td>
+            <td class="s6-4"></td>
+            <td class="s6-5"></td>
+            <td class="s6-6"></td>
+            <td class="s6-7"></td>
+            <td class="s6-8"></td>
+            <td class="s6-9"></td>
+            <td class="s6-10"></td>
+            <td class="s6-11"></td>
+            <td class="s6-12"></td>
+            <td class="s6-13"></td>
+            <td class="s6-14"></td>
+            <td class="s6-15"></td>
+            <td class="s6-16"></td>
+            <td class="s6-17"></td>
+            <td class="s6-18"></td>
+            <td class="s6-19"></td>
+            <td class="s6-20"></td>
+            <td class="s6-21"></td>
+            <td class="s6-22"></td>
+            <td class="s6-23"></td>
+            <td class="s6-24"></td>
+            <td class="s6-25"></td>
+            <td class="s6-26"></td>
+            <td class="s6-27"></td>
+            <td class="s6-28"></td>
+            <td class="s6-29"></td>
+            <td class="s6-30"></td>
+            <td class="s6-31"></td>
+        </tr>
+        <tr>
+            <td class="s7-1"></td>
+            <td class="s7-2"></td>
+            <td class="s7-3"></td>
+            <td class="s7-4"></td>
+            <td class="s7-5"></td>
+            <td class="s7-6"></td>
+            <td class="s7-7"></td>
+            <td class="s7-8"></td>
+            <td class="s7-9"></td>
+            <td class="s7-10"></td>
+            <td class="s7-11"></td>
+            <td class="s7-12"></td>
+            <td class="s7-13"></td>
+            <td class="s7-14"></td>
+            <td class="s7-15"></td>
+            <td class="s7-16"></td>
+            <td class="s7-17"></td>
+            <td class="s7-18"></td>
+            <td class="s7-19"></td>
+            <td class="s7-20"></td>
+            <td class="s7-21"></td>
+            <td class="s7-22"></td>
+            <td class="s7-23"></td>
+            <td class="s7-24"></td>
+            <td class="s7-25"></td>
+            <td class="s7-26"></td>
+            <td class="s7-27"></td>
+            <td class="s7-28"></td>
+            <td class="s7-29"></td>
+            <td class="s7-30"></td>
+            <td class="s7-31"></td>
+        </tr>
+        <tr>
+            <td class="s8-1"></td>
+            <td class="s8-2"></td>
+            <td class="s8-3"></td>
+            <td class="s8-4"></td>
+            <td class="s8-5"></td>
+            <td class="s8-6"></td>
+            <td class="s8-7"></td>
+            <td class="s8-8"></td>
+            <td class="s8-9"></td>
+            <td class="s8-10"></td>
+            <td class="s8-11"></td>
+            <td class="s8-12"></td>
+            <td class="s8-13"></td>
+            <td class="s8-14"></td>
+            <td class="s8-15"></td>
+            <td class="s8-16"></td>
+            <td class="s8-17"></td>
+            <td class="s8-18"></td>
+            <td class="s8-19"></td>
+            <td class="s8-20"></td>
+            <td class="s8-21"></td>
+            <td class="s8-22"></td>
+            <td class="s8-23"></td>
+            <td class="s8-24"></td>
+            <td class="s8-25"></td>
+            <td class="s8-26"></td>
+            <td class="s8-27"></td>
+            <td class="s8-28"></td>
+            <td class="s8-29"></td>
+            <td class="s8-30"></td>
+            <td class="s8-31"></td>
+        </tr>
+        <tr>
+            <td class="s9-1"></td>
+            <td class="s9-2"></td>
+            <td class="s9-3"></td>
+            <td class="s9-4"></td>
+            <td class="s9-5"></td>
+            <td class="s9-6"></td>
+            <td class="s9-7"></td>
+            <td class="s9-8"></td>
+            <td class="s9-9"></td>
+            <td class="s9-10"></td>
+            <td class="s9-11"></td>
+            <td class="s9-12"></td>
+            <td class="s9-13"></td>
+            <td class="s9-14"></td>
+            <td class="s9-15"></td>
+            <td class="s9-16"></td>
+            <td class="s9-17"></td>
+            <td class="s9-18"></td>
+            <td class="s9-19"></td>
+            <td class="s9-20"></td>
+            <td class="s9-21"></td>
+            <td class="s9-22"></td>
+            <td class="s9-23"></td>
+            <td class="s9-24"></td>
+            <td class="s9-25"></td>
+            <td class="s9-26"></td>
+            <td class="s9-27"></td>
+            <td class="s9-28"></td>
+            <td class="s9-29"></td>
+            <td class="s9-30"></td>
+            <td class="s9-31"></td>
+        </tr>
+        <tr>
+            <td class="s10-1"></td>
+            <td class="s10-2"></td>
+            <td class="s10-3"></td>
+            <td class="s10-4"></td>
+            <td class="s10-5"></td>
+            <td class="s10-6"></td>
+            <td class="s10-7"></td>
+            <td class="s10-8"></td>
+            <td class="s10-9"></td>
+            <td class="s10-10"></td>
+            <td class="s10-11"></td>
+            <td class="s10-12"></td>
+            <td class="s10-13"></td>
+            <td class="s10-14"></td>
+            <td class="s10-15"></td>
+            <td class="s10-16"></td>
+            <td class="s10-17"></td>
+            <td class="s10-18"></td>
+            <td class="s10-19"></td>
+            <td class="s10-20"></td>
+            <td class="s10-21"></td>
+            <td class="s10-22"></td>
+            <td class="s10-23"></td>
+            <td class="s10-24"></td>
+            <td class="s10-25"></td>
+            <td class="s10-26"></td>
+            <td class="s10-27"></td>
+            <td class="s10-28"></td>
+            <td class="s10-29"></td>
+            <td class="s10-30"></td>
+            <td class="s10-31"></td>
+        </tr>
+        <tr>
+            <td class="s11-1"></td>
+            <td class="s11-2"></td>
+            <td class="s11-3"></td>
+            <td class="s11-4"></td>
+            <td class="s11-5"></td>
+            <td class="s11-6"></td>
+            <td class="s11-7"></td>
+            <td class="s11-8"></td>
+            <td class="s11-9"></td>
+            <td class="s11-10"></td>
+            <td class="s11-11"></td>
+            <td class="s11-12"></td>
+            <td class="s11-13"></td>
+            <td class="s11-14"></td>
+            <td class="s11-15"></td>
+            <td class="s11-16"></td>
+            <td class="s11-17"></td>
+            <td class="s11-18"></td>
+            <td class="s11-19"></td>
+            <td class="s11-20"></td>
+            <td class="s11-21"></td>
+            <td class="s11-22"></td>
+            <td class="s11-23"></td>
+            <td class="s11-24"></td>
+            <td class="s11-25"></td>
+            <td class="s11-26"></td>
+            <td class="s11-27"></td>
+            <td class="s11-28"></td>
+            <td class="s11-29"></td>
+            <td class="s11-30"></td>
+            <td class="s11-31"></td>
+        </tr>
+        <tr>
+            <td class="s12-1"></td>
+            <td class="s12-2"></td>
+            <td class="s12-3"></td>
+            <td class="s12-4"></td>
+            <td class="s12-5"></td>
+            <td class="s12-6"></td>
+            <td class="s12-7"></td>
+            <td class="s12-8"></td>
+            <td class="s12-9"></td>
+            <td class="s12-10"></td>
+            <td class="s12-11"></td>
+            <td class="s12-12"></td>
+            <td class="s12-13"></td>
+            <td class="s12-14"></td>
+            <td class="s12-15"></td>
+            <td class="s12-16"></td>
+            <td class="s12-17"></td>
+            <td class="s12-18"></td>
+            <td class="s12-19"></td>
+            <td class="s12-20"></td>
+            <td class="s12-21"></td>
+            <td class="s12-22"></td>
+            <td class="s12-23"></td>
+            <td class="s12-24"></td>
+            <td class="s12-25"></td>
+            <td class="s12-26"></td>
+            <td class="s12-27"></td>
+            <td class="s12-28"></td>
+            <td class="s12-29"></td>
+            <td class="s12-30"></td>
+            <td class="s12-31"></td>
+        </tr>
+        <tr>
+            <td class="s13-1"></td>
+            <td class="s13-2"></td>
+            <td class="s13-3"></td>
+            <td class="s13-4"></td>
+            <td class="s13-5"></td>
+            <td class="s13-6"></td>
+            <td class="s13-7"></td>
+            <td class="s13-8"></td>
+            <td class="s13-9"></td>
+            <td class="s13-10"></td>
+            <td class="s13-11"></td>
+            <td class="s13-12"></td>
+            <td class="s13-13"></td>
+            <td class="s13-14"></td>
+            <td class="s13-15"></td>
+            <td class="s13-16"></td>
+            <td class="s13-17"></td>
+            <td class="s13-18"></td>
+            <td class="s13-19"></td>
+            <td class="s13-20"></td>
+            <td class="s13-21"></td>
+            <td class="s13-22"></td>
+            <td class="s13-23"></td>
+            <td class="s13-24"></td>
+            <td class="s13-25"></td>
+            <td class="s13-26"></td>
+            <td class="s13-27"></td>
+            <td class="s13-28"></td>
+            <td class="s13-29"></td>
+            <td class="s13-30"></td>
+            <td class="s13-31"></td>
+        </tr>
+        <tr>
+            <td class="s14-1"></td>
+            <td class="s14-2"></td>
+            <td class="s14-3"></td>
+            <td class="s14-4"></td>
+            <td class="s14-5"></td>
+            <td class="s14-6"></td>
+            <td class="s14-7"></td>
+            <td class="s14-8"></td>
+            <td class="s14-9"></td>
+            <td class="s14-10"></td>
+            <td class="s14-11"></td>
+            <td class="s14-12"></td>
+            <td class="s14-13"></td>
+            <td class="s14-14"></td>
+            <td class="s14-15"></td>
+            <td class="s14-16"></td>
+            <td class="s14-17"></td>
+            <td class="s14-18"></td>
+            <td class="s14-19"></td>
+            <td class="s14-20"></td>
+            <td class="s14-21"></td>
+            <td class="s14-22"></td>
+            <td class="s14-23"></td>
+            <td class="s14-24"></td>
+            <td class="s14-25"></td>
+            <td class="s14-26"></td>
+            <td class="s14-27"></td>
+            <td class="s14-28"></td>
+            <td class="s14-29"></td>
+            <td class="s14-30"></td>
+            <td class="s14-31"></td>
+        </tr>
+        <tr>
+            <td class="s15-1"></td>
+            <td class="s15-2"></td>
+            <td class="s15-3"></td>
+            <td class="s15-4"></td>
+            <td class="s15-5"></td>
+            <td class="s15-6"></td>
+            <td class="s15-7"></td>
+            <td class="s15-8"></td>
+            <td class="s15-9"></td>
+            <td class="s15-10"></td>
+            <td class="s15-11"></td>
+            <td class="s15-12"></td>
+            <td class="s15-13"></td>
+            <td class="s15-14"></td>
+            <td class="s15-15"></td>
+            <td class="s15-16"></td>
+            <td class="s15-17"></td>
+            <td class="s15-18"></td>
+            <td class="s15-19"></td>
+            <td class="s15-20"></td>
+            <td class="s15-21"></td>
+            <td class="s15-22"></td>
+            <td class="s15-23"></td>
+            <td class="s15-24"></td>
+            <td class="s15-25"></td>
+            <td class="s15-26"></td>
+            <td class="s15-27"></td>
+            <td class="s15-28"></td>
+            <td class="s15-29"></td>
+            <td class="s15-30"></td>
+            <td class="s15-31"></td>
+        </tr>
+        <tr>
+            <td class="s16-1"></td>
+            <td class="s16-2"></td>
+            <td class="s16-3"></td>
+            <td class="s16-4"></td>
+            <td class="s16-5"></td>
+            <td class="s16-6"></td>
+            <td class="s16-7"></td>
+            <td class="s16-8"></td>
+            <td class="s16-9"></td>
+            <td class="s16-10"></td>
+            <td class="s16-11"></td>
+            <td class="s16-12"></td>
+            <td class="s16-13"></td>
+            <td class="s16-14"></td>
+            <td class="s16-15"></td>
+            <td class="s16-16"></td>
+            <td class="s16-17"></td>
+            <td class="s16-18"></td>
+            <td class="s16-19"></td>
+            <td class="s16-20"></td>
+            <td class="s16-21"></td>
+            <td class="s16-22"></td>
+            <td class="s16-23"></td>
+            <td class="s16-24"></td>
+            <td class="s16-25"></td>
+            <td class="s16-26"></td>
+            <td class="s16-27"></td>
+            <td class="s16-28"></td>
+            <td class="s16-29"></td>
+            <td class="s16-30"></td>
+            <td class="s16-31"></td>
+        </tr>
+        <tr>
+            <td class="s17-1"></td>
+            <td class="s17-2"></td>
+            <td class="s17-3"></td>
+            <td class="s17-4"></td>
+            <td class="s17-5"></td>
+            <td class="s17-6"></td>
+            <td class="s17-7"></td>
+            <td class="s17-8"></td>
+            <td class="s17-9"></td>
+            <td class="s17-10"></td>
+            <td class="s17-11"></td>
+            <td class="s17-12"></td>
+            <td class="s17-13"></td>
+            <td class="s17-14"></td>
+            <td class="s17-15"></td>
+            <td class="s17-16"></td>
+            <td class="s17-17"></td>
+            <td class="s17-18"></td>
+            <td class="s17-19"></td>
+            <td class="s17-20"></td>
+            <td class="s17-21"></td>
+            <td class="s17-22"></td>
+            <td class="s17-23"></td>
+            <td class="s17-24"></td>
+            <td class="s17-25"></td>
+            <td class="s17-26"></td>
+            <td class="s17-27"></td>
+            <td class="s17-28"></td>
+            <td class="s17-29"></td>
+            <td class="s17-30"></td>
+            <td class="s17-31"></td>
+        </tr>
+        <tr>
+            <td class="s18-1"></td>
+            <td class="s18-2"></td>
+            <td class="s18-3"></td>
+            <td class="s18-4"></td>
+            <td class="s18-5"></td>
+            <td class="s18-6"></td>
+            <td class="s18-7"></td>
+            <td class="s18-8"></td>
+            <td class="s18-9"></td>
+            <td class="s18-10"></td>
+            <td class="s18-11"></td>
+            <td class="s18-12"></td>
+            <td class="s18-13"></td>
+            <td class="s18-14"></td>
+            <td class="s18-15"></td>
+            <td class="s18-16"></td>
+            <td class="s18-17"></td>
+            <td class="s18-18"></td>
+            <td class="s18-19"></td>
+            <td class="s18-20"></td>
+            <td class="s18-21"></td>
+            <td class="s18-22"></td>
+            <td class="s18-23"></td>
+            <td class="s18-24"></td>
+            <td class="s18-25"></td>
+            <td class="s18-26"></td>
+            <td class="s18-27"></td>
+            <td class="s18-28"></td>
+            <td class="s18-29"></td>
+            <td class="s18-30"></td>
+            <td class="s18-31"></td>
+        </tr>
+        <tr>
+            <td class="s19-1"></td>
+            <td class="s19-2"></td>
+            <td class="s19-3"></td>
+            <td class="s19-4"></td>
+            <td class="s19-5"></td>
+            <td class="s19-6"></td>
+            <td class="s19-7"></td>
+            <td class="s19-8"></td>
+            <td class="s19-9"></td>
+            <td class="s19-10"></td>
+            <td class="s19-11"></td>
+            <td class="s19-12"></td>
+            <td class="s19-13"></td>
+            <td class="s19-14"></td>
+            <td class="s19-15"></td>
+            <td class="s19-16"></td>
+            <td class="s19-17"></td>
+            <td class="s19-18"></td>
+            <td class="s19-19"></td>
+            <td class="s19-20"></td>
+            <td class="s19-21"></td>
+            <td class="s19-22"></td>
+            <td class="s19-23"></td>
+            <td class="s19-24"></td>
+            <td class="s19-25"></td>
+            <td class="s19-26"></td>
+            <td class="s19-27"></td>
+            <td class="s19-28"></td>
+            <td class="s19-29"></td>
+            <td class="s19-30"></td>
+            <td class="s19-31"></td>
+        </tr>
+        <tr>
+            <td class="s20-1"></td>
+            <td class="s20-2"></td>
+            <td class="s20-3"></td>
+            <td class="s20-4"></td>
+            <td class="s20-5"></td>
+            <td class="s20-6"></td>
+            <td class="s20-7"></td>
+            <td class="s20-8"></td>
+            <td class="s20-9"></td>
+            <td class="s20-10"></td>
+            <td class="s20-11"></td>
+            <td class="s20-12"></td>
+            <td class="s20-13"></td>
+            <td class="s20-14"></td>
+            <td class="s20-15"></td>
+            <td class="s20-16"></td>
+            <td class="s20-17"></td>
+            <td class="s20-18"></td>
+            <td class="s20-19"></td>
+            <td class="s20-20"></td>
+            <td class="s20-21"></td>
+            <td class="s20-22"></td>
+            <td class="s20-23"></td>
+            <td class="s20-24"></td>
+            <td class="s20-25"></td>
+            <td class="s20-26"></td>
+            <td class="s20-27"></td>
+            <td class="s20-28"></td>
+            <td class="s20-29"></td>
+            <td class="s20-30"></td>
+            <td class="s20-31"></td>
+        </tr>
+        <tr>
+            <td class="s21-1"></td>
+            <td class="s21-2"></td>
+            <td class="s21-3"></td>
+            <td class="s21-4"></td>
+            <td class="s21-5"></td>
+            <td class="s21-6"></td>
+            <td class="s21-7"></td>
+            <td class="s21-8"></td>
+            <td class="s21-9"></td>
+            <td class="s21-10"></td>
+            <td class="s21-11"></td>
+            <td class="s21-12"></td>
+            <td class="s21-13"></td>
+            <td class="s21-14"></td>
+            <td class="s21-15"></td>
+            <td class="s21-16"></td>
+            <td class="s21-17"></td>
+            <td class="s21-18"></td>
+            <td class="s21-19"></td>
+            <td class="s21-20"></td>
+            <td class="s21-21"></td>
+            <td class="s21-22"></td>
+            <td class="s21-23"></td>
+            <td class="s21-24"></td>
+            <td class="s21-25"></td>
+            <td class="s21-26"></td>
+            <td class="s21-27"></td>
+            <td class="s21-28"></td>
+            <td class="s21-29"></td>
+            <td class="s21-30"></td>
+            <td class="s21-31"></td>
+        </tr>
+        <tr>
+            <td class="s22-1"></td>
+            <td class="s22-2"></td>
+            <td class="s22-3"></td>
+            <td class="s22-4"></td>
+            <td class="s22-5"></td>
+            <td class="s22-6"></td>
+            <td class="s22-7"></td>
+            <td class="s22-8"></td>
+            <td class="s22-9"></td>
+            <td class="s22-10"></td>
+            <td class="s22-11"></td>
+            <td class="s22-12"></td>
+            <td class="s22-13"></td>
+            <td class="s22-14"></td>
+            <td class="s22-15"></td>
+            <td class="s22-16"></td>
+            <td class="s22-17"></td>
+            <td class="s22-18"></td>
+            <td class="s22-19"></td>
+            <td class="s22-20"></td>
+            <td class="s22-21"></td>
+            <td class="s22-22"></td>
+            <td class="s22-23"></td>
+            <td class="s22-24"></td>
+            <td class="s22-25"></td>
+            <td class="s22-26"></td>
+            <td class="s22-27"></td>
+            <td class="s22-28"></td>
+            <td class="s22-29"></td>
+            <td class="s22-30"></td>
+            <td class="s22-31"></td>
+        </tr>
+        <tr>
+            <td class="s23-1"></td>
+            <td class="s23-2"></td>
+            <td class="s23-3"></td>
+            <td class="s23-4"></td>
+            <td class="s23-5"></td>
+            <td class="s23-6"></td>
+            <td class="s23-7"></td>
+            <td class="s23-8"></td>
+            <td class="s23-9"></td>
+            <td class="s23-10"></td>
+            <td class="s23-11"></td>
+            <td class="s23-12"></td>
+            <td class="s23-13"></td>
+            <td class="s23-14"></td>
+            <td class="s23-15"></td>
+            <td class="s23-16"></td>
+            <td class="s23-17"></td>
+            <td class="s23-18"></td>
+            <td class="s23-19"></td>
+            <td class="s23-20"></td>
+            <td class="s23-21"></td>
+            <td class="s23-22"></td>
+            <td class="s23-23"></td>
+            <td class="s23-24"></td>
+            <td class="s23-25"></td>
+            <td class="s23-26"></td>
+            <td class="s23-27"></td>
+            <td class="s23-28"></td>
+            <td class="s23-29"></td>
+            <td class="s23-30"></td>
+            <td class="s23-31"></td>
+        </tr>
+        <tr>
+            <td class="s24-1"></td>
+            <td class="s24-2"></td>
+            <td class="s24-3"></td>
+            <td class="s24-4"></td>
+            <td class="s24-5"></td>
+            <td class="s24-6"></td>
+            <td class="s24-7"></td>
+            <td class="s24-8"></td>
+            <td class="s24-9"></td>
+            <td class="s24-10"></td>
+            <td class="s24-11"></td>
+            <td class="s24-12"></td>
+            <td class="s24-13"></td>
+            <td class="s24-14"></td>
+            <td class="s24-15"></td>
+            <td class="s24-16"></td>
+            <td class="s24-17"></td>
+            <td class="s24-18"></td>
+            <td class="s24-19"></td>
+            <td class="s24-20"></td>
+            <td class="s24-21"></td>
+            <td class="s24-22"></td>
+            <td class="s24-23"></td>
+            <td class="s24-24"></td>
+            <td class="s24-25"></td>
+            <td class="s24-26"></td>
+            <td class="s24-27"></td>
+            <td class="s24-28"></td>
+            <td class="s24-29"></td>
+            <td class="s24-30"></td>
+            <td class="s24-31"></td>
+        </tr>
+        <tr>
+            <td class="s25-1"></td>
+            <td class="s25-2"></td>
+            <td class="s25-3"></td>
+            <td class="s25-4"></td>
+            <td class="s25-5"></td>
+            <td class="s25-6"></td>
+            <td class="s25-7"></td>
+            <td class="s25-8"></td>
+            <td class="s25-9"></td>
+            <td class="s25-10"></td>
+            <td class="s25-11"></td>
+            <td class="s25-12"></td>
+            <td class="s25-13"></td>
+            <td class="s25-14"></td>
+            <td class="s25-15"></td>
+            <td class="s25-16"></td>
+            <td class="s25-17"></td>
+            <td class="s25-18"></td>
+            <td class="s25-19"></td>
+            <td class="s25-20"></td>
+            <td class="s25-21"></td>
+            <td class="s25-22"></td>
+            <td class="s25-23"></td>
+            <td class="s25-24"></td>
+            <td class="s25-25"></td>
+            <td class="s25-26"></td>
+            <td class="s25-27"></td>
+            <td class="s25-28"></td>
+            <td class="s25-29"></td>
+            <td class="s25-30"></td>
+            <td class="s25-31"></td>
+        </tr>
+        <tr>
+            <td class="s26-1"></td>
+            <td class="s26-2"></td>
+            <td class="s26-3"></td>
+            <td class="s26-4"></td>
+            <td class="s26-5"></td>
+            <td class="s26-6"></td>
+            <td class="s26-7"></td>
+            <td class="s26-8"></td>
+            <td class="s26-9"></td>
+            <td class="s26-10"></td>
+            <td class="s26-11"></td>
+            <td class="s26-12"></td>
+            <td class="s26-13"></td>
+            <td class="s26-14"></td>
+            <td class="s26-15"></td>
+            <td class="s26-16"></td>
+            <td class="s26-17"></td>
+            <td class="s26-18"></td>
+            <td class="s26-19"></td>
+            <td class="s26-20"></td>
+            <td class="s26-21"></td>
+            <td class="s26-22"></td>
+            <td class="s26-23"></td>
+            <td class="s26-24"></td>
+            <td class="s26-25"></td>
+            <td class="s26-26"></td>
+            <td class="s26-27"></td>
+            <td class="s26-28"></td>
+            <td class="s26-29"></td>
+            <td class="s26-30"></td>
+            <td class="s26-31"></td>
+        </tr>
+        <tr>
+            <td class="s27-1"></td>
+            <td class="s27-2"></td>
+            <td class="s27-3"></td>
+            <td class="s27-4"></td>
+            <td class="s27-5"></td>
+            <td class="s27-6"></td>
+            <td class="s27-7"></td>
+            <td class="s27-8"></td>
+            <td class="s27-9"></td>
+            <td class="s27-10"></td>
+            <td class="s27-11"></td>
+            <td class="s27-12"></td>
+            <td class="s27-13"></td>
+            <td class="s27-14"></td>
+            <td class="s27-15"></td>
+            <td class="s27-16"></td>
+            <td class="s27-17"></td>
+            <td class="s27-18"></td>
+            <td class="s27-19"></td>
+            <td class="s27-20"></td>
+            <td class="s27-21"></td>
+            <td class="s27-22"></td>
+            <td class="s27-23"></td>
+            <td class="s27-24"></td>
+            <td class="s27-25"></td>
+            <td class="s27-26"></td>
+            <td class="s27-27"></td>
+            <td class="s27-28"></td>
+            <td class="s27-29"></td>
+            <td class="s27-30"></td>
+            <td class="s27-31"></td>
+        </tr>
+        <tr>
+            <td class="s28-1"></td>
+            <td class="s28-2"></td>
+            <td class="s28-3"></td>
+            <td class="s28-4"></td>
+            <td class="s28-5"></td>
+            <td class="s28-6"></td>
+            <td class="s28-7"></td>
+            <td class="s28-8"></td>
+            <td class="s28-9"></td>
+            <td class="s28-10"></td>
+            <td class="s28-11"></td>
+            <td class="s28-12"></td>
+            <td class="s28-13"></td>
+            <td class="s28-14"></td>
+            <td class="s28-15"></td>
+            <td class="s28-16"></td>
+            <td class="s28-17"></td>
+            <td class="s28-18"></td>
+            <td class="s28-19"></td>
+            <td class="s28-20"></td>
+            <td class="s28-21"></td>
+            <td class="s28-22"></td>
+            <td class="s28-23"></td>
+            <td class="s28-24"></td>
+            <td class="s28-25"></td>
+            <td class="s28-26"></td>
+            <td class="s28-27"></td>
+            <td class="s28-28"></td>
+            <td class="s28-29"></td>
+            <td class="s28-30"></td>
+            <td class="s28-31"></td>
+        </tr>
+        <tr>
+            <td class="s29-1"></td>
+            <td class="s29-2"></td>
+            <td class="s29-3"></td>
+            <td class="s29-4"></td>
+            <td class="s29-5"></td>
+            <td class="s29-6"></td>
+            <td class="s29-7"></td>
+            <td class="s29-8"></td>
+            <td class="s29-9"></td>
+            <td class="s29-10"></td>
+            <td class="s29-11"></td>
+            <td class="s29-12"></td>
+            <td class="s29-13"></td>
+            <td class="s29-14"></td>
+            <td class="s29-15"></td>
+            <td class="s29-16"></td>
+            <td class="s29-17"></td>
+            <td class="s29-18"></td>
+            <td class="s29-19"></td>
+            <td class="s29-20"></td>
+            <td class="s29-21"></td>
+            <td class="s29-22"></td>
+            <td class="s29-23"></td>
+            <td class="s29-24"></td>
+            <td class="s29-25"></td>
+            <td class="s29-26"></td>
+            <td class="s29-27"></td>
+            <td class="s29-28"></td>
+            <td class="s29-29"></td>
+            <td class="s29-30"></td>
+            <td class="s29-31"></td>
+        </tr>
+        <tr>
+            <td class="s30-1"></td>
+            <td class="s30-2"></td>
+            <td class="s30-3"></td>
+            <td class="s30-4"></td>
+            <td class="s30-5"></td>
+            <td class="s30-6"></td>
+            <td class="s30-7"></td>
+            <td class="s30-8"></td>
+            <td class="s30-9"></td>
+            <td class="s30-10"></td>
+            <td class="s30-11"></td>
+            <td class="s30-12"></td>
+            <td class="s30-13"></td>
+            <td class="s30-14"></td>
+            <td class="s30-15"></td>
+            <td class="s30-16"></td>
+            <td class="s30-17"></td>
+            <td class="s30-18"></td>
+            <td class="s30-19"></td>
+            <td class="s30-20"></td>
+            <td class="s30-21"></td>
+            <td class="s30-22"></td>
+            <td class="s30-23"></td>
+            <td class="s30-24"></td>
+            <td class="s30-25"></td>
+            <td class="s30-26"></td>
+            <td class="s30-27"></td>
+            <td class="s30-28"></td>
+            <td class="s30-29"></td>
+            <td class="s30-30"></td>
+            <td class="s30-31"></td>
+        </tr>
+        <tr>
+            <td class="s31-1"></td>
+            <td class="s31-2"></td>
+            <td class="s31-3"></td>
+            <td class="s31-4"></td>
+            <td class="s31-5"></td>
+            <td class="s31-6"></td>
+            <td class="s31-7"></td>
+            <td class="s31-8"></td>
+            <td class="s31-9"></td>
+            <td class="s31-10"></td>
+            <td class="s31-11"></td>
+            <td class="s31-12"></td>
+            <td class="s31-13"></td>
+            <td class="s31-14"></td>
+            <td class="s31-15"></td>
+            <td class="s31-16"></td>
+            <td class="s31-17"></td>
+            <td class="s31-18"></td>
+            <td class="s31-19"></td>
+            <td class="s31-20"></td>
+            <td class="s31-21"></td>
+            <td class="s31-22"></td>
+            <td class="s31-23"></td>
+            <td class="s31-24"></td>
+            <td class="s31-25"></td>
+            <td class="s31-26"></td>
+            <td class="s31-27"></td>
+            <td class="s31-28"></td>
+            <td class="s31-29"></td>
+            <td class="s31-30"></td>
+            <td class="s31-31"></td>
+        </tr>
+    </table>
+    <span id="renew">再来一局</span>
+</div>
+<script>
+    //table 用事件委托出问题  有点麻烦
+    var tds = document.getElementsByTagName('td');
+    var table = document.getElementsByTagName('table')[0];
+    var renew = document.getElementById('renew');
+    //棋子计数
+    var Num = (function () {
+        var count = 0;
+        return function () {
+            return ++count;
+        }
+    })();
+    //不能用for in
+    for (var i = 0; i < tds.length; i++) {
+        //有问题 不是随机出现的
+        tds[i].addEventListener('click', function () {
+            //判断是否有棋子存在  this.className == 'black' 不行  因为 className  是 's1-1 black' 这样的字符串
+            if (this.className.indexOf('black') != -1 || this.className.indexOf('white') != -1) {
+                //alert('这个地方已经有棋子了');
+                return false;
+            } else {
+                //记录棋子数量
+                var qn = Num();
+                if (qn % 2 == 0) {
+                    this.classList.add('black');
+                    //tds[i].className  不行
+                }else if(qn%2 != 0){
+                    this.classList.add('white');
+                }
+                //落下的棋子的类名
+                var qcname = this.className;
+                //console.log(qcname);
+                succ(qcname);
+            }
+
+        })
+    }
+    //再来一局
+    renew.addEventListener('click', function () {
+        //alert('aa');
+        location.reload();
+    })
+
+    //分割类名
+    function fg(str) {
+        //split('')  加空格  按空格分割   不加  会一个一个分割
+        var s = [];
+        var sarr = str.split(' ');
+        //去掉字符串前面的s
+        sarr[0] = sarr[0].substring(1);
+        //棋子颜色
+        var cname = sarr[1];
+        if (cname == 'white') {
+            cname = '1';
+        } else {
+            cname = '2';
+        }
+        //console.log(cname);
+        //位置坐标
+        var zb = sarr[0].split('-');
+        var x = zb[0];
+        var y = zb[1];
+        s.push(x, y, cname);
+        return s;
+    }
+
+    //根据坐标  判断棋子颜色
+    function color(zb) {
+        var str2 = zb;
+        var c = '0';
+        var dom1 = document.getElementsByClassName(str2)[0];
+        if (dom1) {
+            var dname = dom1.className.split(' ');
+            if (dname[1] == 'white') {
+                c = '1';//白色为1
+            } else if (dname[1] == 'black') {
+                c = '2';//黑色为2
+            }
+        }
+        //console.log(c);
+        return c;
+    }
+
+    //胜利条件判断
+    function spd(arr, cur) {
+        if (arr.indexOf(cur + cur + cur + cur + cur) != -1)
+            if (cur == 1) {
+                table.style.pointerEvents = 'none';
+                setTimeout(function () {
+                    alert('白棋胜利');
+                }, 50)
+            } else {
+                table.style.pointerEvents = 'none';
+                setTimeout(function () {
+                    alert('黑棋胜利');
+                }, 50)
+            }
+    }
+
+    //胜利判断
+    function succ(name) {
+        var str1 = name;
+        var arr1 = fg(str1);
+        var curcol = arr1[2];
+        //console.log(arr1);
+        var qcol = [];
+        //console.log(fg('s12-13'));
+        //横向判断
+        var arr2 = [
+            's' + arr1[0] + '-' + (arr1[1] * 1 - 4),
+            's' + arr1[0] + '-' + (arr1[1] * 1 - 3),
+            's' + arr1[0] + '-' + (arr1[1] * 1 - 2),
+            's' + arr1[0] + '-' + (arr1[1] * 1 - 1),
+            's' + arr1[0] + '-' + (arr1[1]),
+            's' + arr1[0] + '-' + (arr1[1] * 1 + 1),
+            's' + arr1[0] + '-' + (arr1[1] * 1 + 2),
+            's' + arr1[0] + '-' + (arr1[1] * 1 + 3),
+            's' + arr1[0] + '-' + (arr1[1] * 1 + 4)
+        ]
+        //console.log(arr2);
+        for (var i in arr2) {
+            qcol.push(color(arr2[i]));
+            var str2 = qcol.join('');
+        }
+        spd(str2, curcol);
+        //竖向判断
+        arr2 = [
+            's' + (arr1[0] * 1 - 4) + '-' + arr1[1],
+            's' + (arr1[0] * 1 - 3) + '-' + arr1[1],
+            's' + (arr1[0] * 1 - 2) + '-' + arr1[1],
+            's' + (arr1[0] * 1 - 1) + '-' + arr1[1],
+            's' + arr1[0] + '-' + arr1[1],
+            's' + (arr1[0] * 1 + 1) + '-' + arr1[1],
+            's' + (arr1[0] * 1 + 2) + '-' + arr1[1],
+            's' + (arr1[0] * 1 + 3) + '-' + arr1[1],
+            's' + (arr1[0] * 1 + 4) + '-' + arr1[1]
+        ]
+        //console.log(arr2);
+        qcol = [];
+        for (var j in arr2) {
+            qcol.push(color(arr2[j]));
+            var str2 = qcol.join('');
+        }
+        spd(str2, curcol);
+        //console.log(str2);
+        //正斜杠
+        arr2 = [
+            's' + (arr1[0] * 1 + 4) + '-' + (arr1[1] * 1 - 4),
+            's' + (arr1[0] * 1 + 3) + '-' + (arr1[1] * 1 - 3),
+            's' + (arr1[0] * 1 + 2) + '-' + (arr1[1] * 1 - 2),
+            's' + (arr1[0] * 1 + 1) + '-' + (arr1[1] * 1 - 1),
+            's' + arr1[0] + '-' + arr1[1],
+            's' + (arr1[0] * 1 - 1) + '-' + (arr1[1] * 1 + 1),
+            's' + (arr1[0] * 1 - 2) + '-' + (arr1[1] * 1 + 2),
+            's' + (arr1[0] * 1 - 3) + '-' + (arr1[1] * 1 + 3),
+            's' + (arr1[0] * 1 - 4) + '-' + (arr1[1] * 1 + 4)
+        ]
+        //console.log(arr2);
+        qcol = [];
+        for (var j in arr2) {
+            qcol.push(color(arr2[j]));
+            var str2 = qcol.join('');
+        }
+        //console.log(str2);
+        spd(str2, curcol);
+        //反斜杠
+        arr2 = [
+            's' + (arr1[0] * 1 - 4) + '-' + (arr1[1] * 1 - 4),
+            's' + (arr1[0] * 1 - 3) + '-' + (arr1[1] * 1 - 3),
+            's' + (arr1[0] * 1 - 2) + '-' + (arr1[1] * 1 - 2),
+            's' + (arr1[0] * 1 - 1) + '-' + (arr1[1] * 1 - 1),
+            's' + arr1[0] + '-' + arr1[1],
+            's' + (arr1[0] * 1 + 1) + '-' + (arr1[1] * 1 + 1),
+            's' + (arr1[0] * 1 + 2) + '-' + (arr1[1] * 1 + 2),
+            's' + (arr1[0] * 1 + 3) + '-' + (arr1[1] * 1 + 3),
+            's' + (arr1[0] * 1 + 4) + '-' + (arr1[1] * 1 + 4)
+        ]
+        //console.log(arr2);
+        qcol = [];
+        for (var j in arr2) {
+            qcol.push(color(arr2[j]));
+            var str2 = qcol.join('');
+        }
+        //console.log(str2);
+        spd(str2, curcol);
+    }
+</script>
+</body>
+</html>

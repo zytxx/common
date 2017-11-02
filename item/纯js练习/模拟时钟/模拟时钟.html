@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #container {
+            margin: 200px auto;
+            /*border: 1px solid red;*/
+
+        }
+
+        #pointer {
+            margin: 0 auto;
+            list-style-type: none;
+            height: 400px;
+            width: 400px;
+            border-radius: 100%;
+            border: 2px solid black;
+            position: relative;
+        }
+
+        #pointer li {
+            height: 8px;
+            width: 2px;
+            background: black;
+            position: absolute;
+            left: 199px;
+            top: 0;
+            transform-origin: center 200px;
+        }
+
+        #pointer li:nth-of-type(5n) {
+            height: 18px;
+            width: 3px;
+        }
+
+        #num {
+            margin: 0 auto;
+            list-style-type: none;
+            height: 360px;
+            width: 360px;
+            border-radius: 100%;
+            /*border: 2px solid black;*/
+            margin-top: -384px;
+            position: relative;
+        }
+
+        #num li {
+            height: 18px;
+            width: 18px;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            left: 171px;
+            transform-origin: center 180px;
+        }
+
+        span {
+            display: inline-block;
+            transform: rotate(30deg);
+        }
+
+        #dot {
+            margin: -188px auto 0;
+            height: 20px;
+            width: 20px;
+            border-radius: 100%;
+            background-color: #ff0b7b;
+        }
+
+        #hour {
+            position: absolute;
+            left: 50%;
+            top: 312px;
+            width: 10px;
+            height: 90px;
+            transform-origin:bottom;
+            background-color: blue;
+        }
+
+        #minute {
+            position: absolute;
+            left: 50%;
+            top: 282px;
+            width: 5px;
+            height: 120px;
+            background-color: red;
+            /*以底部中间为变换原点*/
+            transform-origin:bottom;
+        }
+
+        #second {
+            position: absolute;
+            left: 50%;
+            top: 242px;
+            width: 3px;
+            height: 160px;
+            background-color: green;
+            transform-origin:bottom;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <ul id="pointer">
+    </ul>
+    <ul id="num">
+        <li><span>12</span></li>
+        <li><span>1</span></li>
+        <li><span>2</span></li>
+        <li><span>3</span></li>
+        <li><span>4</span></li>
+        <li><span>5</span></li>
+        <li><span>6</span></li>
+        <li><span>7</span></li>
+        <li><span>8</span></li>
+        <li><span>9</span></li>
+        <li><span>10</span></li>
+        <li><span>11</span></li>
+    </ul>
+    <div id="hour"></div>
+    <div id="minute"></div>
+    <div id="second"></div>
+    <div id="dot"></div>
+</div>
+<script>
+    window.onload = function () {
+        var hour = document.getElementById('hour');
+        var minute = document.getElementById('minute');
+        var second = document.getElementById('second');
+        var ul = document.getElementsByTagName('ul')[0];
+        var ul2 = document.getElementsByTagName('ul')[1];
+        var times = ul2.children;
+        var spans = document.getElementsByTagName('span');
+
+        var lis = [];
+        for (var i = 1; i <= 60; i++) {
+
+            lis += '<li' + ' class= "s' + i + '">' + '</li>';
+        }
+        ul.innerHTML = lis;
+
+        var s = 's';
+        for (var i = 1; i <= 60; i++) {
+            //debugger;
+            var dom = document.getElementsByClassName(s + i)[0];
+            dom.style.transform = 'rotate(' + i * 6 + 'deg)';
+        }
+
+        //var s1 = document.getElementsByClassName('s1')[0];
+        //s1.style.height = '30px';
+        for (var j = 0; j < times.length; j++) {
+            //每个li 转30deg
+            times[j].style.transform = 'rotate(' + j * 30 + 'deg)';
+            //span  保持不变
+            spans[j].style.transform = 'rotate(' + (-j * 30) + 'deg)';
+        }
+        hour.style.left = (document.documentElement.clientWidth - hour.offsetWidth) / 2 + 'px';
+        minute.style.left = (document.documentElement.clientWidth - minute.offsetWidth) / 2 + 'px';
+        second.style.left = (document.documentElement.clientWidth - second.offsetWidth) / 2 + 'px';
+
+        function clock() {
+            var stime = new Date();
+
+            var s = stime.getSeconds(),
+                i = stime.getMinutes()+s/60,
+                h = stime.getHours()+i/60;
+            //console.log(h,i,s);
+            hour.style.transform = 'rotate(' + (h * 30) + 'deg)';
+            minute.style.transform = 'rotate(' + (i * 6) + 'deg)';
+            second.style.transform = 'rotate(' + (s * 6) + 'deg)';
+
+        }
+        clock();
+        setInterval(clock,1000);
+    }
+</script>
+</body>
+</html>
